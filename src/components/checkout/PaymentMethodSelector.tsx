@@ -11,9 +11,9 @@ interface PaymentMethodSelectorProps {
 }
 
 const methods: { id: PaymentMethod; icon: React.ElementType; key: string }[] = [
-  { id: 'bank_transfer', icon: Building2, key: 'bank_transfer' },
   { id: 'pago_movil', icon: Smartphone, key: 'pago_movil' },
   { id: 'zelle', icon: DollarSign, key: 'zelle' },
+  { id: 'bank_transfer', icon: Building2, key: 'bank_transfer' },
   { id: 'paypal', icon: CreditCard, key: 'paypal' },
   { id: 'crypto', icon: Bitcoin, key: 'crypto' },
 ];

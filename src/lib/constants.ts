@@ -2,7 +2,8 @@ export const BRAND = {
   name: 'AltusPoint',
   tagline_es: 'Distribuidora de Productos Médicos',
   tagline_en: 'Medical Products Distributor',
-  whatsapp: '+58412XXXXXXX', // Cambiar por número real
+  whatsapp: '+584147114583',
+  phone: '+584147114583',
   email: 'info@altuspoint.com',
   address: 'Caracas, Venezuela',
 };
@@ -16,21 +17,21 @@ export const COLORS = {
 };
 
 export const PAYMENT_INFO = {
-  bank_transfer: {
-    bank: 'Banco de Venezuela',
-    account_type: 'Corriente',
-    account_number: 'XXXX-XXXX-XX-XXXXXXXXXX',
-    rif: 'J-501636583',
-    holder: 'AltusPoint C.A.',
-  },
   pago_movil: {
-    phone: '0412-XXXXXXX',
-    bank_code: '0102',
-    id: 'J-501636583',
+    phone: '0414-7114582',
+    cedula: 'V-5673532',
+    holder: 'Maximiliano Zambrano',
   },
   zelle: {
-    email: 'pagos@altuspoint.com',
-    holder: 'AltusPoint LLC',
+    email: 'fabiolamaxi@hotmail.com',
+    bank: 'Bank of America',
+    holder: 'Maximiliano Zambrano',
+  },
+  bank_transfer: {
+    bank: 'Bancolombia',
+    account_type: 'Ahorros',
+    account_number: '63961549401',
+    holder: 'AltusPoint',
   },
   crypto: {
     network: 'Binance Smart Chain (BEP20)',

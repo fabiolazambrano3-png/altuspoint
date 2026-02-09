@@ -60,28 +60,28 @@ export default function PaymentInstructions({ method }: PaymentInstructionsProps
     <div className="bg-gray-50 rounded-xl p-4">
       <h4 className="font-semibold text-navy mb-3">{t('payment_instructions')}</h4>
 
-      {method === 'bank_transfer' && (
-        <>
-          <InfoRow label="Banco" value={bt.bank} />
-          <InfoRow label="Tipo" value={bt.account_type} />
-          <InfoRow label="Cuenta" value={bt.account_number} />
-          <InfoRow label="RIF" value={bt.rif} />
-          <InfoRow label="Titular" value={bt.holder} />
-        </>
-      )}
-
       {method === 'pago_movil' && (
         <>
           <InfoRow label="Teléfono" value={pm.phone} />
-          <InfoRow label="Banco" value={pm.bank_code} />
-          <InfoRow label="Cédula/RIF" value={pm.id} />
+          <InfoRow label="Cédula" value={pm.cedula} />
+          <InfoRow label="Titular" value={pm.holder} />
         </>
       )}
 
       {method === 'zelle' && (
         <>
           <InfoRow label="Email" value={zl.email} />
+          <InfoRow label="Banco" value={zl.bank} />
           <InfoRow label="Titular" value={zl.holder} />
+        </>
+      )}
+
+      {method === 'bank_transfer' && (
+        <>
+          <InfoRow label="Banco" value={bt.bank} />
+          <InfoRow label="Tipo de cuenta" value={bt.account_type} />
+          <InfoRow label="Número de cuenta" value={bt.account_number} />
+          <InfoRow label="Titular" value={bt.holder} />
         </>
       )}
 
