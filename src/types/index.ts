@@ -8,6 +8,7 @@ export interface Category {
   description_es: string;
   description_en: string;
   image_url: string;
+  color?: string; // Brandbook product line color
 }
 
 export interface Product {
@@ -26,6 +27,9 @@ export interface Product {
   active: boolean;
   category?: Category;
   created_at: string;
+  brand?: string;
+  sku?: string;
+  tags?: string[];
 }
 
 export interface CartItem {

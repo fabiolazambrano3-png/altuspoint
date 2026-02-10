@@ -21,11 +21,20 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // TODO: Connect to API route to send email
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setSent(true);
-    toast.success(t('sent'));
-    setLoading(false);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error('Failed to send');
+      setSent(true);
+      toast.success(t('sent'));
+    } catch {
+      toast.error('Error al enviar el mensaje');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '58412XXXXXXX';

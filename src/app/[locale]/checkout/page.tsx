@@ -11,6 +11,7 @@ import PaymentInstructions from '@/components/checkout/PaymentInstructions';
 import ProofUpload from '@/components/checkout/ProofUpload';
 import { formatPrice } from '@/lib/utils';
 import { CheckCircle, ShoppingBag } from 'lucide-react';
+import toast from 'react-hot-toast';
 import type { PaymentMethod } from '@/types';
 
 export default function CheckoutPage() {
@@ -32,10 +33,39 @@ export default function CheckoutPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Connect to Supabase to create order
-    // For now, simulate order placement
-    setOrderPlaced(true);
-    clearCart();
+    try {
+      const orderRes = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: items.map((item) => ({
+            productId: item.product.id,
+            quantity: item.quantity,
+            unitPrice: item.product.price_usd,
+          })),
+          shippingInfo: form,
+          paymentMethod,
+          totalUsd: totalPrice,
+          totalBs: totalPrice * 36,
+        }),
+      });
+
+      const orderData = await orderRes.json();
+
+      // Upload payment proof if exists
+      if (proofFile && orderData.orderId) {
+        const formData = new FormData();
+        formData.append('file', proofFile);
+        formData.append('orderId', orderData.orderId);
+        await fetch('/api/upload-proof', { method: 'POST', body: formData });
+      }
+
+      setOrderPlaced(true);
+      clearCart();
+    } catch (err) {
+      console.error('Order error:', err);
+      toast.error('Error al crear el pedido');
+    }
   };
 
   if (items.length === 0 && !orderPlaced) {

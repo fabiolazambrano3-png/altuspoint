@@ -1,14 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { useTranslations, useLocale } from 'next-intl';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
+import { createClient } from '@/lib/supabase/client';
 import toast from 'react-hot-toast';
 
 export default function LoginPage() {
   const t = useTranslations('auth');
+  const locale = useLocale();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get('redirect');
   const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
@@ -19,21 +24,55 @@ export default function LoginPage() {
     phone: '',
   });
 
+  const supabase = createClient();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
       if (isLogin) {
-        // TODO: Supabase auth login
-        toast.success('Inicio de sesión exitoso');
-      } else {
-        if (form.password !== form.confirmPassword) {
-          toast.error('Las contraseñas no coinciden');
+        const { error } = await supabase.auth.signInWithPassword({
+          email: form.email,
+          password: form.password,
+        });
+        if (error) {
+          toast.error(
+            error.message === 'Invalid login credentials'
+              ? t('invalid_credentials')
+              : error.message
+          );
           return;
         }
-        // TODO: Supabase auth register
-        toast.success('Cuenta creada exitosamente');
+        toast.success(t('login_success'));
+        router.push(redirect || `/${locale}/cuenta`);
+        router.refresh();
+      } else {
+        if (form.password !== form.confirmPassword) {
+          toast.error(t('passwords_dont_match'));
+          return;
+        }
+        if (form.password.length < 6) {
+          toast.error(t('password_too_short'));
+          return;
+        }
+        const { error } = await supabase.auth.signUp({
+          email: form.email,
+          password: form.password,
+          options: {
+            data: {
+              full_name: form.fullName,
+              phone: form.phone,
+            },
+          },
+        });
+        if (error) {
+          toast.error(error.message);
+          return;
+        }
+        toast.success(t('register_success'));
+        router.push(`/${locale}/cuenta`);
+        router.refresh();
       }
     } catch {
       toast.error(isLogin ? t('login_error') : t('register_error'));
@@ -109,9 +148,20 @@ export default function LoginPage() {
 
         {isLogin && (
           <div className="mt-2 text-center">
-            <Link href="/cuenta/login" className="text-sm text-gray-500 hover:text-blue transition-colors">
+            <button
+              onClick={async () => {
+                if (!form.email) {
+                  toast.error(t('enter_email_first'));
+                  return;
+                }
+                const { error } = await supabase.auth.resetPasswordForEmail(form.email);
+                if (error) toast.error(error.message);
+                else toast.success(t('reset_email_sent'));
+              }}
+              className="text-sm text-gray-500 hover:text-blue transition-colors"
+            >
               {t('forgot_password')}
-            </Link>
+            </button>
           </div>
         )}
       </div>

@@ -1,19 +1,50 @@
 export const BRAND = {
   name: 'AltusPoint',
-  tagline_es: 'Distribuidora de Productos Médicos',
-  tagline_en: 'Medical Products Distributor',
+  legalName: 'AltusPoint, C.A.',
+  rif: 'J-501636583',
+  tagline_es: 'Distribuidora de Material y Equipos Médicos',
+  tagline_en: 'Medical Equipment & Supplies Distributor',
+  slogan_es: 'Nuestro compromiso es con la seguridad',
+  slogan_en: 'Our commitment is to safety',
   whatsapp: '+584147114583',
+  whatsappFormatted: '+58 414-711-4583',
   phone: '+584147114583',
   email: 'info@altuspoint.com',
   address: 'Caracas, Venezuela',
+  experience: '30+',
+  instagram: '@altuspoint',
+  linkedin: 'altuspoint',
 };
 
 export const COLORS = {
+  // Primary
   navy: '#0B1D4F',
   blue: '#6B8EC2',
   lightBlue: '#E8EFF8',
+  // Secondary - Health Greens
+  greenPrimary: '#7AB648',
+  greenLight: '#A8D86E',
+  greenDark: '#4A8C2A',
+  teal: '#5BB5A2',
+  // Neutrals
   white: '#FFFFFF',
-  gray: '#F5F5F5',
+  gray50: '#F9FAFB',
+  gray100: '#F3F4F6',
+  gray500: '#6B7280',
+  gray700: '#374151',
+  gray900: '#111827',
+};
+
+// Product line colors from brandbook (green → blue → navy gradient)
+export const PRODUCT_LINE_COLORS: Record<string, string> = {
+  'equipos-medicos': '#7AB648',
+  'material-quirurgico': '#8BC66A',
+  'medias-antiembolicas': '#5BB5A2',
+  'cirugia-plastica': '#5BA8BF',
+  'ortesis-rehabilitacion': '#6B8EC2',
+  'desinfeccion-limpieza': '#5A6FAF',
+  'gases-medicinales': '#3D4F8F',
+  'cuidado-heridas': '#0B1D4F',
 };
 
 export const PAYMENT_INFO = {
