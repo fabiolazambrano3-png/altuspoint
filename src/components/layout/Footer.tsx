@@ -18,8 +18,8 @@ export default function Footer() {
             <Image
               src="/images/logo.png"
               alt="AltusPoint"
-              width={220}
-              height={60}
+              width={424}
+              height={120}
               className="h-12 w-auto mb-5 brightness-0 invert"
             />
             <p className="text-gray-400 text-sm leading-relaxed max-w-md">
