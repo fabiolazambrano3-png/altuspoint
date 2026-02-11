@@ -1,19 +1,18 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import Button from '@/components/ui/Button';
-import { Shield, Truck, Headphones, Award, Clock, Heart } from 'lucide-react';
+import { Shield, Truck, Headphones, Award, Clock, Heart, Monitor, Scissors, Footprints, Sparkles, Bone, SprayCan, Wind, Bandage, type LucideIcon } from 'lucide-react';
 import { BRAND } from '@/lib/constants';
 
 // 8 Product lines from brandbook with their gradient colors
-const productLines = [
-  { slug: 'equipos-medicos', color: '#7AB648', bgColor: '#E6F0D9', icon: '🏥' },
-  { slug: 'material-quirurgico', color: '#8BC66A', bgColor: '#D9EFD6', icon: '🔬' },
-  { slug: 'medias-antiembolicas', color: '#5BB5A2', bgColor: '#D4EDE4', icon: '🦵' },
-  { slug: 'cirugia-plastica', color: '#5BA8BF', bgColor: '#D6E8ED', icon: '✨' },
-  { slug: 'ortesis-rehabilitacion', color: '#6B8EC2', bgColor: '#D8E4F0', icon: '🦴' },
-  { slug: 'desinfeccion-limpieza', color: '#5A6FAF', bgColor: '#DDE2F0', icon: '🧴' },
-  { slug: 'gases-medicinales', color: '#3D4F8F', bgColor: '#D8DAE8', icon: '💨' },
-  { slug: 'cuidado-heridas', color: '#0B1D4F', bgColor: '#D4D7E5', icon: '🩹' },
+const productLines: { slug: string; color: string; bgColor: string; icon: LucideIcon }[] = [
+  { slug: 'equipos-medicos', color: '#7AB648', bgColor: '#E6F0D9', icon: Monitor },
+  { slug: 'material-quirurgico', color: '#8BC66A', bgColor: '#D9EFD6', icon: Scissors },
+  { slug: 'medias-antiembolicas', color: '#5BB5A2', bgColor: '#D4EDE4', icon: Footprints },
+  { slug: 'cirugia-plastica', color: '#5BA8BF', bgColor: '#D6E8ED', icon: Sparkles },
+  { slug: 'ortesis-rehabilitacion', color: '#6B8EC2', bgColor: '#D8E4F0', icon: Bone },
+  { slug: 'desinfeccion-limpieza', color: '#5A6FAF', bgColor: '#DDE2F0', icon: SprayCan },
+  { slug: 'gases-medicinales', color: '#3D4F8F', bgColor: '#D8DAE8', icon: Wind },
+  { slug: 'cuidado-heridas', color: '#0B1D4F', bgColor: '#D4D7E5', icon: Bandage },
 ];
 
 export default function HomePage() {
@@ -52,14 +51,14 @@ export default function HomePage() {
 
             <div className="mt-10 flex flex-wrap gap-4">
               <Link href="/productos">
-                <Button size="lg" className="bg-white text-navy hover:bg-gray-50 font-semibold shadow-lg shadow-black/10 px-8">
+                <button className="inline-flex items-center justify-center rounded-lg px-8 py-3 text-base font-semibold bg-white text-navy hover:bg-gray-50 shadow-lg shadow-black/10 transition-all duration-200">
                   {t('hero_cta')}
-                </Button>
+                </button>
               </Link>
               <Link href="/contacto">
-                <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 font-medium px-8">
+                <button className="inline-flex items-center justify-center rounded-lg px-8 py-3 text-base font-medium border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-200">
                   {tc('contact')}
-                </Button>
+                </button>
               </Link>
             </div>
 
@@ -106,10 +105,10 @@ export default function HomePage() {
                 <div className="absolute top-0 left-0 right-0 h-1 transition-all duration-300 group-hover:h-1.5" style={{backgroundColor: line.color}} />
 
                 <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 text-2xl transition-transform duration-300 group-hover:scale-110"
-                  style={{backgroundColor: line.bgColor}}
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
+                  style={{backgroundColor: `${line.color}15`}}
                 >
-                  {line.icon}
+                  <line.icon className="w-6 h-6" style={{color: line.color}} />
                 </div>
                 <h3 className="text-sm font-semibold text-gray-900 group-hover:text-navy transition-colors leading-tight">
                   {t(`cat_${line.slug.replace(/-/g, '_')}`)}
@@ -233,18 +232,18 @@ export default function HomePage() {
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link href="/productos">
-              <Button size="lg" className="bg-white text-navy hover:bg-gray-50 font-semibold shadow-lg px-8">
+              <button className="inline-flex items-center justify-center rounded-lg px-8 py-3 text-base font-semibold bg-white text-navy hover:bg-gray-50 shadow-lg transition-all duration-200">
                 {t('hero_cta')}
-              </Button>
+              </button>
             </Link>
             <a
               href={`https://wa.me/${BRAND.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 font-medium px-8">
+              <button className="inline-flex items-center justify-center rounded-lg px-8 py-3 text-base font-medium border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-200">
                 WhatsApp
-              </Button>
+              </button>
             </a>
           </div>
         </div>

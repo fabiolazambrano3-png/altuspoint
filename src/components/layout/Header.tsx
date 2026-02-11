@@ -61,9 +61,9 @@ export default function Header() {
             <Image
               src="/images/logo.png"
               alt="AltusPoint"
-              width={180}
-              height={50}
-              className="h-10 sm:h-12 w-auto"
+              width={220}
+              height={60}
+              className="h-12 sm:h-14 w-auto"
               priority
             />
           </Link>

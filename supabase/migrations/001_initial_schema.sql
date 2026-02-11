@@ -128,11 +128,16 @@ CREATE POLICY "Users can create order items" ON order_items FOR INSERT
 -- Store Settings: anyone can read
 CREATE POLICY "Anyone can view store settings" ON store_settings FOR SELECT USING (true);
 
--- Seed initial categories
+-- Seed initial categories (8 product lines)
 INSERT INTO categories (name_es, name_en, slug, description_es, description_en) VALUES
-  ('Equipos Médicos', 'Medical Equipment', 'equipos-medicos', 'Equipos de diagnóstico y tratamiento', 'Diagnostic and treatment equipment'),
-  ('Material Quirúrgico', 'Surgical Supplies', 'material-quirurgico', 'Instrumental y material para cirugía', 'Instruments and supplies for surgery'),
-  ('Insumos Médicos', 'Medical Supplies', 'insumos-medicos', 'Consumibles y material desechable', 'Consumables and disposable materials');
+  ('Equipos Médicos', 'Medical Equipment', 'equipos-medicos', 'Equipos de monitoreo, diagnóstico y tratamiento de las mejores marcas', 'Monitoring, diagnostic and treatment equipment from top brands'),
+  ('Material Quirúrgico', 'Surgical Supplies', 'material-quirurgico', 'Instrumental, material desechable y equipamiento para cirugía', 'Instruments, disposable materials and surgical equipment'),
+  ('Medias Antiembólicas', 'Anti-Embolism Stockings', 'medias-antiembolicas', 'Medias de compresión graduada para prevención de trombosis', 'Graduated compression stockings for thrombosis prevention'),
+  ('Cirugía Plástica y Post-Operatorio', 'Plastic Surgery & Post-Op', 'cirugia-plastica', 'Fajas, prendas de compresión y accesorios post-quirúrgicos', 'Girdles, compression garments and post-surgical accessories'),
+  ('Órtesis y Rehabilitación', 'Orthosis & Rehabilitation', 'ortesis-rehabilitacion', 'Soportes ortopédicos y productos de rehabilitación Medivaric', 'Orthopedic supports and Medivaric rehabilitation products'),
+  ('Desinfección y Limpieza', 'Disinfection & Cleaning', 'desinfeccion-limpieza', 'Soluciones de desinfección de alto nivel para equipos e instrumental', 'High-level disinfection solutions for equipment and instruments'),
+  ('Gases Medicinales', 'Medical Gases', 'gases-medicinales', 'Equipos y reguladores para gases medicinales Ohio Medical', 'Equipment and regulators for Ohio Medical medicinal gases'),
+  ('Cuidado de Heridas', 'Wound Care', 'cuidado-heridas', 'Productos especializados para el cuidado y tratamiento de heridas', 'Specialized products for wound care and treatment');
 
 -- Seed store settings (payment info - UPDATE WITH REAL VALUES)
 INSERT INTO store_settings (key, value) VALUES
