@@ -44,6 +44,9 @@ export async function POST(request: Request) {
         images: body.images || [],
         featured: body.featured || false,
         active: body.active !== false,
+        brand: body.brand || '',
+        sku: body.sku || '',
+        tags: body.tags || [],
       })
       .select()
       .single();

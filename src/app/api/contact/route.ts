@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { sendContactEmail } from '@/lib/email';
 
 export async function POST(request: Request) {
   try {
@@ -9,25 +10,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    // Log contact submission (in production, integrate with Resend/SendGrid/Supabase Edge Functions)
-    console.log('📧 Contact form submission:', {
-      name,
-      email,
-      message,
-      timestamp: new Date().toISOString(),
-    });
-
-    // TODO: Integrate with email service
-    // Example with Resend:
-    // await resend.emails.send({
-    //   from: 'AltusPoint <noreply@altuspoint.com>',
-    //   to: 'info@altuspoint.com',
-    //   subject: `Contacto web: ${name}`,
-    //   html: `<p><strong>${name}</strong> (${email})</p><p>${message}</p>`,
-    // });
+    if (process.env.RESEND_API_KEY) {
+      await sendContactEmail({ name, email, message });
+    } else {
+      console.log('RESEND_API_KEY not set — contact form logged only:', { name, email, message });
+    }
 
     return NextResponse.json({ success: true });
-  } catch {
+  } catch (err) {
+    console.error('Contact API error:', err);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

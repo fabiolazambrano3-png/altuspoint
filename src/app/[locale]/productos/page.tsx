@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { Search, SlidersHorizontal, X } from 'lucide-react';
+import { Search, SlidersHorizontal, X, Loader2 } from 'lucide-react';
 import ProductGrid from '@/components/products/ProductGrid';
 import CategoryFilter from '@/components/products/CategoryFilter';
 import { demoProducts, demoCategories } from '@/lib/demo-data';
 import { getLocalizedField } from '@/lib/utils';
-import type { Locale } from '@/types';
+import type { Product, Category, Locale } from '@/types';
 
 export default function ProductsPage() {
   const locale = useLocale() as Locale;
@@ -15,10 +15,43 @@ export default function ProductsPage() {
   const tc = useTranslations('common');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [products, setProducts] = useState<Product[]>(demoProducts);
+  const [categories, setCategories] = useState<Category[]>(demoCategories);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch from Supabase, fallback to demo data
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const [productsRes, categoriesRes] = await Promise.all([
+          fetch('/api/products'),
+          fetch('/api/categories'),
+        ]);
+        const productsData = await productsRes.json();
+        const categoriesData = await categoriesRes.json();
+
+        if (productsData.products?.length > 0) {
+          setProducts(productsData.products);
+        }
+        if (categoriesData.categories?.length > 0) {
+          setCategories(categoriesData.categories);
+        }
+      } catch {
+        // Keep demo data as fallback
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
 
   const filteredProducts = useMemo(() => {
-    return demoProducts.filter((product) => {
-      const matchesCategory = !selectedCategory || product.category_id === selectedCategory;
+    return products.filter((product) => {
+      // Match by category UUID or demo category id
+      const matchesCategory =
+        !selectedCategory ||
+        product.category_id === selectedCategory ||
+        (product as Product & { category?: Category }).category?.slug === selectedCategory;
       const query = searchQuery.toLowerCase();
       const matchesSearch =
         !query ||
@@ -29,10 +62,10 @@ export default function ProductsPage() {
         product.tags?.some((tag) => tag.toLowerCase().includes(query));
       return matchesCategory && matchesSearch && product.active;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [selectedCategory, searchQuery, products]);
 
   const selectedCategoryData = selectedCategory
-    ? demoCategories.find((c) => c.id === selectedCategory)
+    ? categories.find((c) => c.id === selectedCategory || c.slug === selectedCategory)
     : null;
 
   return (
@@ -73,7 +106,7 @@ export default function ProductsPage() {
       {/* Category Filter */}
       <div className="mb-6">
         <CategoryFilter
-          categories={demoCategories}
+          categories={categories}
           selectedCategory={selectedCategory}
           onSelect={setSelectedCategory}
         />
@@ -82,11 +115,20 @@ export default function ProductsPage() {
       {/* Results count */}
       <div className="flex items-center justify-between mb-6">
         <p className="text-sm text-gray-500">
-          {filteredProducts.length} {t('results_count')}
-          {selectedCategoryData && (
-            <span className="ml-1">
-              {t('in_category')} <strong>{getLocalizedField(selectedCategoryData, 'name', locale)}</strong>
+          {loading ? (
+            <span className="inline-flex items-center gap-2">
+              <Loader2 className="w-4 h-4 animate-spin" />
+              {t('loading') || 'Cargando...'}
             </span>
+          ) : (
+            <>
+              {filteredProducts.length} {t('results_count')}
+              {selectedCategoryData && (
+                <span className="ml-1">
+                  {t('in_category')} <strong>{getLocalizedField(selectedCategoryData, 'name', locale)}</strong>
+                </span>
+              )}
+            </>
           )}
         </p>
         {(selectedCategory || searchQuery) && (

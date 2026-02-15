@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useCart } from '@/components/providers/CartProvider';
 import Button from '@/components/ui/Button';
 import ProductGrid from '@/components/products/ProductGrid';
@@ -14,15 +14,15 @@ import { BRAND } from '@/lib/constants';
 import {
   Minus,
   Plus,
-  ArrowLeft,
   Check,
   Package,
   MessageCircle,
   Tag,
   Barcode,
   Building2,
+  Loader2,
 } from 'lucide-react';
-import type { Locale } from '@/types';
+import type { Product, Category, Locale } from '@/types';
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -31,8 +31,46 @@ export default function ProductDetailPage() {
   const tc = useTranslations('common');
   const { addItem } = useCart();
   const [quantity, setQuantity] = useState(1);
+  const [product, setProduct] = useState<Product | null>(null);
+  const [allProducts, setAllProducts] = useState<Product[]>(demoProducts);
+  const [allCategories, setAllCategories] = useState<Category[]>(demoCategories);
+  const [loading, setLoading] = useState(true);
 
-  const product = demoProducts.find((p) => p.slug === params.slug);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const [productsRes, categoriesRes] = await Promise.all([
+          fetch('/api/products'),
+          fetch('/api/categories'),
+        ]);
+        const productsData = await productsRes.json();
+        const categoriesData = await categoriesRes.json();
+
+        const prods: Product[] = productsData.products?.length > 0 ? productsData.products : demoProducts;
+        const cats: Category[] = categoriesData.categories?.length > 0 ? categoriesData.categories : demoCategories;
+
+        setAllProducts(prods);
+        setAllCategories(cats);
+
+        const found = prods.find((p: Product) => p.slug === params.slug);
+        setProduct(found || null);
+      } catch {
+        const found = demoProducts.find((p) => p.slug === params.slug);
+        setProduct(found || null);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, [params.slug]);
+
+  if (loading) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 py-16 flex justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-blue" />
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -50,11 +88,13 @@ export default function ProductDetailPage() {
   const imageUrl = product.images?.[0] || '/images/placeholder.svg';
   const isConsultPrice = product.price_usd === 0;
 
-  const category = demoCategories.find((c) => c.id === product.category_id);
+  const category =
+    product.category ||
+    allCategories.find((c) => c.id === product.category_id);
   const categoryName = category ? getLocalizedField(category, 'name', locale) : '';
   const categoryColor = category?.color || '#0B1D4F';
 
-  const relatedProducts = demoProducts
+  const relatedProducts = allProducts
     .filter((p) => p.category_id === product.category_id && p.id !== product.id)
     .slice(0, 4);
 
