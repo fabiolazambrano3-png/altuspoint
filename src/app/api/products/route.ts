@@ -9,10 +9,10 @@ export async function GET(request: Request) {
     const slug = searchParams.get('slug');
 
     if (slug) {
-      // Get single product by slug
+      // Get single product by slug with variants
       const { data: product, error } = await supabase
         .from('products')
-        .select('*, categories(id, name_es, name_en, slug, description_es, description_en, image_url)')
+        .select('*, categories(id, name_es, name_en, slug, description_es, description_en, image_url), product_variants(*)')
         .eq('slug', slug)
         .eq('active', true)
         .single();
@@ -21,12 +21,13 @@ export async function GET(request: Request) {
         return NextResponse.json({ product: null });
       }
 
-      // Map category join to category_id-compatible shape
       const mapped = {
         ...product,
         category: product.categories || undefined,
+        variants: (product.product_variants || []).filter((v: { active: boolean }) => v.active),
       };
       delete (mapped as Record<string, unknown>).categories;
+      delete (mapped as Record<string, unknown>).product_variants;
 
       return NextResponse.json({ product: mapped });
     }

@@ -30,6 +30,19 @@ export interface Product {
   brand?: string;
   sku?: string;
   tags?: string[];
+  variants?: ProductVariant[];
+}
+
+export interface ProductVariant {
+  id: string;
+  product_id: string;
+  name: string;
+  size: string;
+  color: string;
+  sku_variant: string;
+  stock: number;
+  price_diff_usd: number;
+  active: boolean;
 }
 
 export interface CartItem {
