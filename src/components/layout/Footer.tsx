@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { BRAND } from '@/lib/constants';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
 
 export default function Footer() {
   const t = useTranslations('footer');
@@ -77,6 +77,15 @@ export default function Footer() {
                 <MapPin className="w-4 h-4 shrink-0 text-blue/50" />
                 {BRAND.address}
               </div>
+              <a
+                href={BRAND.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors text-sm group"
+              >
+                <Instagram className="w-4 h-4 shrink-0 text-blue/50 group-hover:text-blue transition-colors" />
+                {BRAND.instagram}
+              </a>
             </div>
           </div>
         </div>

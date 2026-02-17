@@ -12,7 +12,8 @@ export const BRAND = {
   email: 'gerencia.ve@altuspoint.com',
   address: 'San Cristóbal, Venezuela',
   experience: '30+',
-  instagram: '@altuspoint',
+  instagram: '@altuspointco',
+  instagramUrl: 'https://www.instagram.com/altuspointco/',
   linkedin: 'altuspoint',
 };
 

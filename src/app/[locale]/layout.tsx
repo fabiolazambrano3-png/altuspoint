@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/opengraph-image',
+        url: 'https://altuspoint.health/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'AltusPoint - Distribuidora de Material y Equipos Médicos',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: 'AltusPoint - Distribuidora de Material y Equipos Médicos',
     description:
       'Distribuidora líder de equipos y material médico en Venezuela. Calidad garantizada para profesionales de la salud.',
-    images: ['/opengraph-image'],
+    images: ['https://altuspoint.health/opengraph-image'],
   },
 };
 
