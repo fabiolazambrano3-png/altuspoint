@@ -28,12 +28,21 @@ export const metadata: Metadata = {
     siteName: 'AltusPoint',
     locale: 'es_VE',
     type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'AltusPoint - Distribuidora de Material y Equipos Médicos',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AltusPoint - Distribuidora de Material y Equipos Médicos',
     description:
       'Distribuidora líder de equipos y material médico en Venezuela. Calidad garantizada para profesionales de la salud.',
+    images: ['/opengraph-image'],
   },
 };
 
