@@ -10,7 +10,7 @@ export const BRAND = {
   whatsappFormatted: '+58 414-711-4583',
   phone: '+584147114583',
   email: 'gerencia.ve@altuspoint.com',
-  address: 'San Cristóbal, Venezuela',
+  address: 'Calle 12 #18-44 Barrio Obrero, San Cristóbal - Venezuela',
   experience: '30+',
   instagram: '@altuspointco',
   instagramUrl: 'https://www.instagram.com/altuspointco/',
