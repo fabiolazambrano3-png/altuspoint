@@ -37,7 +37,7 @@ export default function ContactPage() {
     }
   };
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '58412XXXXXXX';
+  const whatsappUrl = `https://wa.me/${BRAND.whatsapp.replace('+', '')}`;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
@@ -100,13 +100,18 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="flex items-start gap-4 p-6 bg-gray-50 rounded-xl">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-start gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group"
+          >
             <Phone className="w-6 h-6 text-navy mt-0.5" />
             <div>
               <h3 className="font-semibold text-gray-900">Teléfono</h3>
-              <p className="text-gray-600">{BRAND.whatsapp}</p>
+              <p className="text-blue group-hover:underline">{BRAND.whatsappFormatted}</p>
             </div>
-          </div>
+          </a>
 
           <div className="flex items-start gap-4 p-6 bg-gray-50 rounded-xl">
             <MapPin className="w-6 h-6 text-navy mt-0.5" />
@@ -117,7 +122,7 @@ export default function ContactPage() {
           </div>
 
           <a
-            href={`https://wa.me/${whatsappNumber}`}
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 w-full p-4 bg-green-500 hover:bg-green-600 text-white rounded-xl font-medium transition-colors"
