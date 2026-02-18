@@ -7,6 +7,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import { CartProvider } from '@/components/providers/CartProvider';
+import { ExchangeRateProvider } from '@/components/providers/ExchangeRateProvider';
 import '../globals.css';
 
 const geistSans = Geist({
@@ -60,6 +61,7 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={`${geistSans.variable} antialiased`}>
         <NextIntlClientProvider messages={messages}>
+          <ExchangeRateProvider>
           <CartProvider>
             <div className="min-h-screen flex flex-col">
               <Header />
@@ -78,6 +80,7 @@ export default async function LocaleLayout({
               }}
             />
           </CartProvider>
+          </ExchangeRateProvider>
         </NextIntlClientProvider>
       </body>
     </html>

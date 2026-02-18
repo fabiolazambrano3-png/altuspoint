@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCart } from '@/components/providers/CartProvider';
 import { formatPrice, getLocalizedField } from '@/lib/utils';
+import { useExchangeRate } from '@/components/providers/ExchangeRateProvider';
 import { Minus, Plus, Trash2 } from 'lucide-react';
 import type { CartItem as CartItemType, Locale } from '@/types';
 
@@ -15,6 +16,7 @@ export default function CartItem({ item }: CartItemProps) {
   const locale = useLocale() as Locale;
   const t = useTranslations('cart');
   const { updateQuantity, removeItem } = useCart();
+  const { formatBs } = useExchangeRate();
 
   const name = getLocalizedField(item.product, 'name', locale);
   const imageUrl = item.product.images?.[0] || '/images/placeholder.svg';
@@ -62,6 +64,11 @@ export default function CartItem({ item }: CartItemProps) {
         <p className="font-semibold text-navy">
           {formatPrice(item.product.price_usd * item.quantity)}
         </p>
+        {formatBs(item.product.price_usd * item.quantity) && (
+          <p className="text-xs text-gray-500">
+            {formatBs(item.product.price_usd * item.quantity)}
+          </p>
+        )}
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ import PaymentMethodSelector from '@/components/checkout/PaymentMethodSelector';
 import PaymentInstructions from '@/components/checkout/PaymentInstructions';
 import ProofUpload from '@/components/checkout/ProofUpload';
 import { formatPrice } from '@/lib/utils';
+import { useExchangeRate } from '@/components/providers/ExchangeRateProvider';
 import { CheckCircle, ShoppingBag } from 'lucide-react';
 import toast from 'react-hot-toast';
 import type { PaymentMethod } from '@/types';
@@ -18,6 +19,7 @@ export default function CheckoutPage() {
   const t = useTranslations('checkout');
   const tc = useTranslations('cart');
   const { items, totalPrice, clearCart } = useCart();
+  const { formatBs, convertToVes } = useExchangeRate();
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod | null>(null);
   const [proofFile, setProofFile] = useState<File | null>(null);
   const [orderPlaced, setOrderPlaced] = useState(false);
@@ -46,7 +48,7 @@ export default function CheckoutPage() {
           shippingInfo: form,
           paymentMethod,
           totalUsd: totalPrice,
-          totalBs: totalPrice * 36,
+          totalBs: convertToVes(totalPrice),
         }),
       });
 
@@ -201,7 +203,12 @@ export default function CheckoutPage() {
 
               <div className="flex justify-between mb-6">
                 <span className="font-semibold text-lg">{tc('total')}</span>
-                <span className="font-bold text-lg text-navy">{formatPrice(totalPrice)}</span>
+                <div className="text-right">
+                  <span className="font-bold text-lg text-navy">{formatPrice(totalPrice)}</span>
+                  {formatBs(totalPrice) && (
+                    <p className="text-sm text-gray-500">{formatBs(totalPrice)}</p>
+                  )}
+                </div>
               </div>
 
               <Button

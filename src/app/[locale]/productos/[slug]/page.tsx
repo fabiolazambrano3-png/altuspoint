@@ -9,6 +9,7 @@ import { useCart } from '@/components/providers/CartProvider';
 import Button from '@/components/ui/Button';
 import ProductGrid from '@/components/products/ProductGrid';
 import { formatPrice, getLocalizedField } from '@/lib/utils';
+import { useExchangeRate } from '@/components/providers/ExchangeRateProvider';
 import { demoProducts, demoCategories } from '@/lib/demo-data';
 import { BRAND } from '@/lib/constants';
 import {
@@ -32,6 +33,7 @@ export default function ProductDetailPage() {
   const t = useTranslations('products');
   const tc = useTranslations('common');
   const { addItem } = useCart();
+  const { formatBs } = useExchangeRate();
   const [quantity, setQuantity] = useState(1);
   const [product, setProduct] = useState<Product | null>(null);
   const [allProducts, setAllProducts] = useState<Product[]>(demoProducts);
@@ -269,9 +271,9 @@ export default function ProductDetailPage() {
               <span className="text-3xl font-bold text-navy">
                 {formatPrice(effectivePrice)}
               </span>
-              {product.price_bs > 0 && (
+              {formatBs(effectivePrice) && (
                 <span className="text-lg text-gray-500">
-                  {formatPrice(product.price_bs + (selectedVariant?.price_diff_usd ?? 0) * (product.price_bs / product.price_usd || 1), 'BS')}
+                  {formatBs(effectivePrice)}
                 </span>
               )}
             </div>

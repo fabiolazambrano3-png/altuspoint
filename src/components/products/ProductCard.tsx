@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { useCart } from '@/components/providers/CartProvider';
 import { formatPrice, getLocalizedField } from '@/lib/utils';
+import { useExchangeRate } from '@/components/providers/ExchangeRateProvider';
 import { ShoppingCart, MessageCircle } from 'lucide-react';
 import type { Product, Locale } from '@/types';
 import { BRAND } from '@/lib/constants';
@@ -17,6 +18,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const locale = useLocale() as Locale;
   const t = useTranslations('products');
   const { addItem } = useCart();
+  const { formatBs } = useExchangeRate();
 
   const name = getLocalizedField(product, 'name', locale);
   const imageUrl = product.images?.[0] || '/images/placeholder.svg';
@@ -73,7 +75,9 @@ export default function ProductCard({ product }: ProductCardProps) {
           ) : (
             <div>
               <p className="text-lg font-bold text-navy">{formatPrice(product.price_usd)}</p>
-              <p className="text-xs text-gray-500">{formatPrice(product.price_bs, 'BS')}</p>
+              {formatBs(product.price_usd) && (
+                <p className="text-xs text-gray-500">{formatBs(product.price_usd)}</p>
+              )}
             </div>
           )}
 
