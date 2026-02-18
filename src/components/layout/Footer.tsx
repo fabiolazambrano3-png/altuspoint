@@ -28,6 +28,9 @@ export default function Footer() {
             <p className="text-gray-500 text-xs mt-3 font-mono">
               RIF: {BRAND.rif}
             </p>
+            <p className="text-gray-500 text-xs mt-1 font-mono">
+              Registro sanitario de empresa: {BRAND.registroSanitario}
+            </p>
             <p className="text-blue/60 text-sm mt-6 italic font-display">
               &ldquo;{t('slogan')}&rdquo;
             </p>

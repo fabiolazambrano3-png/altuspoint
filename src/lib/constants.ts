@@ -2,6 +2,7 @@ export const BRAND = {
   name: 'AltusPoint',
   legalName: 'AltusPoint, C.A.',
   rif: 'J-501636583',
+  registroSanitario: 'EMP-4.815',
   tagline_es: 'Distribuidora de Material y Equipos Médicos',
   tagline_en: 'Medical Equipment & Supplies Distributor',
   slogan_es: 'Nuestro compromiso es con la seguridad',
