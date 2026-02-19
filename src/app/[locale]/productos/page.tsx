@@ -8,6 +8,7 @@ import ProductGrid from '@/components/products/ProductGrid';
 import CategoryFilter from '@/components/products/CategoryFilter';
 import { demoProducts, demoCategories } from '@/lib/demo-data';
 import { getLocalizedField } from '@/lib/utils';
+import { buildCategoryTree, getDescendantIds } from '@/lib/category-utils';
 import type { Product, Category, Locale } from '@/types';
 
 export default function ProductsPage() {
@@ -16,18 +17,37 @@ export default function ProductsPage() {
   const tc = useTranslations('common');
   const searchParams = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [products, setProducts] = useState<Product[]>(demoProducts);
   const [categories, setCategories] = useState<Category[]>(demoCategories);
   const [loading, setLoading] = useState(true);
 
+  // Build category tree
+  const { topLevel, childrenMap } = useMemo(
+    () => buildCategoryTree(categories),
+    [categories]
+  );
+
   // Read category filter from URL query param (e.g. ?category=equipos-medicos)
   useEffect(() => {
     const categoryParam = searchParams.get('category');
-    if (categoryParam) {
-      setSelectedCategory(categoryParam);
+    if (categoryParam && categories.length > 0) {
+      // Find by slug — could be a parent or child category
+      const cat = categories.find((c) => c.slug === categoryParam);
+      if (cat) {
+        if (cat.parent_id) {
+          // It's a subcategory — select its parent and itself
+          setSelectedCategory(cat.parent_id);
+          setSelectedSubcategory(cat.id);
+        } else {
+          // It's a top-level category
+          setSelectedCategory(cat.id);
+          setSelectedSubcategory(null);
+        }
+      }
     }
-  }, [searchParams]);
+  }, [searchParams, categories]);
 
   // Fetch from Supabase, fallback to demo data
   useEffect(() => {
@@ -57,11 +77,20 @@ export default function ProductsPage() {
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
-      // Match by category UUID or demo category id
-      const matchesCategory =
-        !selectedCategory ||
-        product.category_id === selectedCategory ||
-        (product as Product & { category?: Category }).category?.slug === selectedCategory;
+      let matchesCategory = true;
+
+      if (selectedSubcategory) {
+        // Exact subcategory match
+        matchesCategory = product.category_id === selectedSubcategory;
+      } else if (selectedCategory) {
+        // Match parent OR any of its children
+        const validIds = [selectedCategory, ...getDescendantIds(selectedCategory, childrenMap)];
+        matchesCategory =
+          validIds.includes(product.category_id) ||
+          (product as Product & { category?: Category }).category?.slug ===
+            categories.find((c) => c.id === selectedCategory)?.slug;
+      }
+
       const query = searchQuery.toLowerCase();
       const matchesSearch =
         !query ||
@@ -72,11 +101,14 @@ export default function ProductsPage() {
         product.tags?.some((tag) => tag.toLowerCase().includes(query));
       return matchesCategory && matchesSearch && product.active;
     });
-  }, [selectedCategory, searchQuery, products]);
+  }, [selectedCategory, selectedSubcategory, searchQuery, products, categories, childrenMap]);
 
-  const selectedCategoryData = selectedCategory
-    ? categories.find((c) => c.id === selectedCategory || c.slug === selectedCategory)
-    : null;
+  // Show info for selected category or subcategory
+  const selectedCategoryData = selectedSubcategory
+    ? categories.find((c) => c.id === selectedSubcategory)
+    : selectedCategory
+      ? categories.find((c) => c.id === selectedCategory)
+      : null;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
@@ -118,7 +150,11 @@ export default function ProductsPage() {
         <CategoryFilter
           categories={categories}
           selectedCategory={selectedCategory}
-          onSelect={setSelectedCategory}
+          selectedSubcategory={selectedSubcategory}
+          onSelect={(catId, subCatId) => {
+            setSelectedCategory(catId);
+            setSelectedSubcategory(subCatId ?? null);
+          }}
         />
       </div>
 
@@ -145,6 +181,7 @@ export default function ProductsPage() {
           <button
             onClick={() => {
               setSelectedCategory(null);
+              setSelectedSubcategory(null);
               setSearchQuery('');
             }}
             className="text-sm text-blue hover:text-navy transition-colors font-medium"

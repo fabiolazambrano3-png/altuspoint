@@ -9,6 +9,9 @@ export interface Category {
   description_en: string;
   image_url: string;
   color?: string; // Brandbook product line color
+  parent_id?: string | null;
+  display_order?: number;
+  children?: Category[];
 }
 
 export interface Product {

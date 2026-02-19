@@ -36,6 +36,7 @@ interface Category {
   name_es: string;
   name_en: string;
   slug: string;
+  parent_id?: string | null;
 }
 
 interface Variant {
@@ -613,9 +614,17 @@ export default function AdminProductsPage() {
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue/50"
                       >
                         <option value="">Sin categoría</option>
-                        {categories.map((cat) => (
-                          <option key={cat.id} value={cat.id}>{cat.name_es}</option>
-                        ))}
+                        {categories
+                          .filter((cat) => !cat.parent_id)
+                          .map((parent) => {
+                            const children = categories.filter((c) => c.parent_id === parent.id);
+                            return [
+                              <option key={parent.id} value={parent.id}>{parent.name_es}</option>,
+                              ...children.map((child) => (
+                                <option key={child.id} value={child.id}>&nbsp;&nbsp;— {child.name_es}</option>
+                              )),
+                            ];
+                          })}
                       </select>
                     </div>
                   )}

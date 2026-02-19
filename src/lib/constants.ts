@@ -41,7 +41,7 @@ export const COLORS = {
 export const PRODUCT_LINE_COLORS: Record<string, string> = {
   'equipos-medicos': '#7AB648',
   'material-quirurgico': '#8BC66A',
-  'medias-antiembolicas': '#5BB5A2',
+  'medias-de-compresion': '#5BB5A2',
   'cirugia-plastica': '#5BA8BF',
   'ortesis-rehabilitacion': '#6B8EC2',
   'desinfeccion-limpieza': '#5A6FAF',

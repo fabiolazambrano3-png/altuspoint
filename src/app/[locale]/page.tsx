@@ -7,7 +7,7 @@ import { BRAND } from '@/lib/constants';
 const productLines: { slug: string; color: string; bgColor: string; icon: LucideIcon }[] = [
   { slug: 'equipos-medicos', color: '#7AB648', bgColor: '#E6F0D9', icon: Monitor },
   { slug: 'material-quirurgico', color: '#8BC66A', bgColor: '#D9EFD6', icon: Scissors },
-  { slug: 'medias-antiembolicas', color: '#5BB5A2', bgColor: '#D4EDE4', icon: Footprints },
+  { slug: 'medias-de-compresion', color: '#5BB5A2', bgColor: '#D4EDE4', icon: Footprints },
   { slug: 'cirugia-plastica', color: '#5BA8BF', bgColor: '#D6E8ED', icon: Sparkles },
   { slug: 'ortesis-rehabilitacion', color: '#6B8EC2', bgColor: '#D8E4F0', icon: Bone },
   { slug: 'desinfeccion-limpieza', color: '#5A6FAF', bgColor: '#DDE2F0', icon: SprayCan },
