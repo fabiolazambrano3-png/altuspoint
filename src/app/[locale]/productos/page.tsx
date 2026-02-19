@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { Search, SlidersHorizontal, X, Loader2 } from 'lucide-react';
 import ProductGrid from '@/components/products/ProductGrid';
@@ -13,11 +14,20 @@ export default function ProductsPage() {
   const locale = useLocale() as Locale;
   const t = useTranslations('products');
   const tc = useTranslations('common');
+  const searchParams = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [products, setProducts] = useState<Product[]>(demoProducts);
   const [categories, setCategories] = useState<Category[]>(demoCategories);
   const [loading, setLoading] = useState(true);
+
+  // Read category filter from URL query param (e.g. ?category=equipos-medicos)
+  useEffect(() => {
+    const categoryParam = searchParams.get('category');
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+    }
+  }, [searchParams]);
 
   // Fetch from Supabase, fallback to demo data
   useEffect(() => {
