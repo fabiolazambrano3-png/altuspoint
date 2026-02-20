@@ -47,6 +47,7 @@ export const PRODUCT_LINE_COLORS: Record<string, string> = {
   'desinfeccion-limpieza': '#5A6FAF',
   'gases-medicinales': '#3D4F8F',
   'cuidado-heridas': '#0B1D4F',
+  'linea-materna': '#E8A0BF',
 };
 
 export const PAYMENT_INFO = {
