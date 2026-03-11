@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { Shield, Truck, Headphones, Award, Clock, Heart, Monitor, Scissors, Footprints, Sparkles, Bone, SprayCan, Wind, Bandage, type LucideIcon } from 'lucide-react';
+import { Shield, Truck, Headphones, Award, Clock, Heart, Monitor, Scissors, Footprints, Sparkles, Bone, SprayCan, Wind, Bandage, Baby, type LucideIcon } from 'lucide-react';
 import { BRAND } from '@/lib/constants';
 
 // 8 Product lines from brandbook with their gradient colors
@@ -13,6 +13,7 @@ const productLines: { slug: string; color: string; bgColor: string; icon: Lucide
   { slug: 'desinfeccion-limpieza', color: '#5A6FAF', bgColor: '#DDE2F0', icon: SprayCan },
   { slug: 'gases-medicinales', color: '#3D4F8F', bgColor: '#D8DAE8', icon: Wind },
   { slug: 'cuidado-heridas', color: '#0B1D4F', bgColor: '#D4D7E5', icon: Bandage },
+  { slug: 'linea-materna', color: '#E8A0BF', bgColor: '#F9E4EF', icon: Baby },
 ];
 
 export default function HomePage() {

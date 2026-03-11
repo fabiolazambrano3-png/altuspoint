@@ -19,7 +19,11 @@ export const metadata: Metadata = {
   title: 'AltusPoint - Distribuidora de Productos Médicos',
   description:
     'Distribuidora líder de equipos y material médico en Venezuela. Calidad garantizada para profesionales de la salud.',
-  keywords: ['material médico', 'equipos médicos', 'Venezuela', 'distribuidora', 'AltusPoint'],
+  keywords: [
+    'material médico', 'equipos médicos', 'Venezuela', 'distribuidora', 'AltusPoint',
+    'medias de compresión', 'medias compresivas', 'material quirúrgico', 'compresión graduada',
+    'cirugía plástica', 'ortesis', 'rehabilitación', 'insumos médicos', 'salud',
+  ],
   metadataBase: new URL('https://altuspoint.health'),
   openGraph: {
     title: 'AltusPoint - Distribuidora de Material y Equipos Médicos',
@@ -60,6 +64,34 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body className={`${geistSans.variable} antialiased`}>
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'AltusPoint',
+              legalName: 'AltusPoint, C.A.',
+              url: 'https://altuspoint.health',
+              logo: 'https://altuspoint.health/images/logo.png',
+              description: 'Distribuidora de material y equipos médicos en Venezuela con más de 30 años de experiencia.',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: 'Calle 12 #18-44 Barrio Obrero',
+                addressLocality: 'San Cristóbal',
+                addressCountry: 'VE',
+              },
+              contactPoint: {
+                '@type': 'ContactPoint',
+                telephone: '+584147114583',
+                contactType: 'customer service',
+                availableLanguage: ['Spanish', 'English'],
+              },
+              sameAs: ['https://www.instagram.com/altuspointco/'],
+            }),
+          }}
+        />
         <NextIntlClientProvider messages={messages}>
           <ExchangeRateProvider>
           <CartProvider>

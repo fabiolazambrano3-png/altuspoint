@@ -86,6 +86,7 @@ export default function AdminProductsPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [search, setSearch] = useState('');
+  const [filterCategory, setFilterCategory] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState(emptyProduct);
@@ -354,12 +355,29 @@ export default function AdminProductsPage() {
     }
   };
 
-  const filteredProducts = products.filter(
-    (p) =>
+  // Build set of category IDs to match (includes children if parent selected)
+  const getFilterCategoryIds = (catId: string): Set<string> => {
+    const ids = new Set<string>();
+    if (!catId) return ids;
+    ids.add(catId);
+    // If it's a parent category, include all its children
+    categories.filter((c) => c.parent_id === catId).forEach((c) => ids.add(c.id));
+    return ids;
+  };
+
+  const filteredProducts = products.filter((p) => {
+    const matchesSearch =
+      !search ||
       p.name_es.toLowerCase().includes(search.toLowerCase()) ||
       p.name_en.toLowerCase().includes(search.toLowerCase()) ||
-      p.slug.includes(search.toLowerCase())
-  );
+      p.slug.includes(search.toLowerCase());
+
+    const matchesCategory =
+      !filterCategory ||
+      getFilterCategoryIds(filterCategory).has(p.category_id || '');
+
+    return matchesSearch && matchesCategory;
+  });
 
   if (loading) {
     return (
@@ -375,7 +393,11 @@ export default function AdminProductsPage() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-navy">{t('products')}</h1>
-          <p className="text-sm text-gray-500 mt-1">{products.length} productos en total</p>
+          <p className="text-sm text-gray-500 mt-1">
+            {filteredProducts.length !== products.length
+              ? `${filteredProducts.length} de ${products.length} productos`
+              : `${products.length} productos en total`}
+          </p>
         </div>
         <Button onClick={openCreate}>
           <Plus className="w-4 h-4 mr-2" />
@@ -383,16 +405,36 @@ export default function AdminProductsPage() {
         </Button>
       </div>
 
-      {/* Search */}
-      <div className="relative mb-6">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-        <input
-          type="text"
-          placeholder="Buscar productos..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue/50"
-        />
+      {/* Search + Category Filter */}
+      <div className="flex flex-col sm:flex-row gap-3 mb-6">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Buscar productos..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue/50"
+          />
+        </div>
+        <select
+          value={filterCategory}
+          onChange={(e) => setFilterCategory(e.target.value)}
+          className="sm:w-64 px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue/50 bg-white text-gray-700"
+        >
+          <option value="">Todas las categorías</option>
+          {categories
+            .filter((cat) => !cat.parent_id)
+            .map((parent) => {
+              const children = categories.filter((c) => c.parent_id === parent.id);
+              return [
+                <option key={parent.id} value={parent.id}>{parent.name_es}</option>,
+                ...children.map((child) => (
+                  <option key={child.id} value={child.id}>&nbsp;&nbsp;— {child.name_es}</option>
+                )),
+              ];
+            })}
+        </select>
       </div>
 
       {/* Table */}
@@ -413,7 +455,7 @@ export default function AdminProductsPage() {
               {filteredProducts.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="px-5 py-12 text-center text-gray-400">
-                    {search ? 'No se encontraron productos' : 'No hay productos aún. Crea el primero.'}
+                    {search || filterCategory ? 'No se encontraron productos con esos filtros' : 'No hay productos aún. Crea el primero.'}
                   </td>
                 </tr>
               ) : (

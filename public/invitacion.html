@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitaci&oacute;n — Evento MediVaric & AltusPoint</title>
+  <meta name="description" content="MediVaric y AltusPoint le invitan a la presentaci&oacute;n exclusiva de l&iacute;neas de productos. Mi&eacute;rcoles 4 de marzo, 3:00 p.m. — Sal&oacute;n de la Sociedad M&eacute;dica, San Crist&oacute;bal.">
+  <!-- Open Graph / WhatsApp / Social -->
+  <meta property="og:title" content="Invitaci&oacute;n — Evento MediVaric & AltusPoint">
+  <meta property="og:description" content="Presentaci&oacute;n exclusiva de l&iacute;neas de productos: Medias de Compresi&oacute;n, &Oacute;rtesis, Copper Silhouette y Copper Mom. Mi&eacute;rcoles 4 de marzo, 3:00 p.m.">
+  <meta property="og:image" content="https://altuspoint.health/images/logo.png">
+  <meta property="og:url" content="https://altuspoint.health/invitacion.html">
+  <meta property="og:type" content="website">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .invitation {
+      width: 600px;
+      max-width: 100%;
+      background: #ffffff;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(11, 29, 79, 0.15);
+    }
+
+    /* ===== TOP ACCENT BAR ===== */
+    .accent-bar {
+      height: 6px;
+      background: linear-gradient(90deg, #0B1D4F 0%, #6B8EC2 50%, #5BB5A2 100%);
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      background: linear-gradient(135deg, #0B1D4F 0%, #1a3a7a 60%, #2a4a8a 100%);
+      padding: 48px 40px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(91, 181, 162, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(107, 142, 194, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .header-label {
+      font-size: 14px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 28px;
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logos-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-altuspoint {
+      height: 70px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      object-fit: contain;
+    }
+
+    /* MediVaric SVG logo inline */
+    .logo-medivaric-svg {
+      height: 70px;
+      width: auto;
+    }
+
+    .divider-with-x {
+      position: relative;
+      margin: 16px auto 20px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .divider-with-x .line-left,
+    .divider-with-x .line-right {
+      flex: 1;
+      max-width: 200px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #6B8EC2);
+    }
+
+    .divider-with-x .line-right {
+      background: linear-gradient(90deg, #5BB5A2, transparent);
+    }
+
+    .divider-with-x .x-mark {
+      font-size: 22px;
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 300;
+      padding: 0 14px;
+      line-height: 1;
+    }
+
+    .invite-label {
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #5BB5A2;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .content {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .event-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #0B1D4F;
+      line-height: 1.35;
+      margin-bottom: 16px;
+    }
+
+    .event-subtitle {
+      font-size: 15px;
+      color: #374151;
+      line-height: 1.7;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+
+    .event-subtitle strong {
+      color: #0B1D4F;
+      font-weight: 700;
+    }
+
+    /* ===== PRODUCT LINES SHOWCASE ===== */
+    .product-lines {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 35px;
+    }
+
+    .product-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 16px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .pill-compresion {
+      background: rgba(91, 181, 162, 0.12);
+      color: #3D8B7A;
+    }
+
+    .pill-ortesis {
+      background: rgba(107, 142, 194, 0.12);
+      color: #4A6FA0;
+    }
+
+    .pill-copper {
+      background: rgba(91, 168, 191, 0.12);
+      color: #3D8A9E;
+    }
+
+    .pill-mom {
+      background: rgba(232, 160, 191, 0.15);
+      color: #9B4D7A;
+    }
+
+    .pill-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+    }
+
+    .pill-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ===== EVENT DETAILS ===== */
+    .details-card {
+      background: #F9FAFB;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 30px;
+      border: 1px solid #F3F4F6;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 14px 0;
+      text-align: left;
+    }
+
+    .detail-row + .detail-row {
+      border-top: 1px solid #E5E7EB;
+    }
+
+    .detail-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .detail-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .icon-date { background: #E8EFF8; }
+    .icon-time { background: #D4EDE4; }
+    .icon-location { background: #E8EFF8; }
+
+    .detail-text {
+      flex: 1;
+    }
+
+    .detail-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #6B8EC2;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .detail-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0B1D4F;
+      line-height: 1.3;
+    }
+
+    .detail-extra {
+      font-size: 13px;
+      color: #6B7280;
+      margin-top: 2px;
+    }
+
+    /* ===== RSVP SECTION ===== */
+    .rsvp-section {
+      margin-bottom: 10px;
+    }
+
+    .rsvp-text {
+      font-size: 13px;
+      color: #6B7280;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .rsvp-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #0B1D4F 0%, #1a3a7a 100%);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 40px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.3s;
+    }
+
+    .rsvp-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(11, 29, 79, 0.3);
+    }
+
+    .rsvp-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: #25D366;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #0B1D4F;
+      padding: 28px 40px;
+      text-align: center;
+    }
+
+    .footer-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo-ap {
+      height: 28px;
+      filter: brightness(0) invert(1);
+      opacity: 0.7;
+    }
+
+    .footer-sep {
+      width: 1px;
+      height: 24px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .footer-logo-mv {
+      height: 30px;
+      opacity: 0.85;
+    }
+
+    .footer-text {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1.8;
+      letter-spacing: 0.3px;
+    }
+
+    .footer-text a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      body { padding: 0; }
+      .invitation { border-radius: 0; }
+      .header { padding: 30px 24px 28px; }
+      .content { padding: 30px 24px; }
+      .event-title { font-size: 22px; }
+      .logos-row { gap: 16px; }
+      .logo-altuspoint { height: 50px; }
+      .logo-medivaric-svg { height: 50px; }
+      .details-card { padding: 24px; }
+      .product-lines { gap: 6px; }
+      .product-pill { padding: 6px 12px; font-size: 11px; }
+      .footer { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="invitation">
+
+    <!-- Accent Bar -->
+    <div class="accent-bar"></div>
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-label">Invitaci&oacute;n Especial</div>
+      <div class="logos-row">
+        <img src="/images/logo.png" alt="AltusPoint" class="logo-altuspoint">
+        <!-- MediVaric SVG logo (blue + teal rounded rectangles) -->
+        <svg class="logo-medivaric-svg" viewBox="0 0 380.3 78.5" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#0060A1" d="M12.1,0C12.1,0,0,0,0,12.1v54.4c0,0,0,12.1,12.1,12.1h340c0,0,12.1,0,12.1-12.1V12.1c0,0,0-12.1-12.1-12.1L12.1,0z"/>
+          <path fill="#009C98" d="M380.3,66.5V12.1c0,0,0-12.1-12.1-12.1H192.1v78.5h176.1C368.2,78.5,380.3,78.5,380.3,66.5"/>
+          <path fill="#FFFFFF" d="M17.5,17.9c0.9-3.7,4.2-6.3,8-6.3c3.7,0,7,2.4,8.2,5.9l9.6,32.3h0.2l9.6-32.3c1.2-3.5,4.5-5.8,8.2-5.9c3.8,0,7.1,2.6,8,6.3l7.6,45.5c0.1,0.5,0.1,0.9,0.1,1.4c0.1,3.1-2.3,5.7-5.4,5.9c-0.2,0-0.3,0-0.5,0c-4.2,0-5.8-1.9-6.4-5.7l-4.8-33.2h-0.2L49.9,66c-0.6,2-2.1,4.7-6.5,4.7s-6-2.8-6.5-4.7l-9.8-34.2h-0.1L22.1,65c-0.6,3.8-2.2,5.7-6.4,5.7c-3.1,0.1-5.8-2.3-5.9-5.4c0-0.1,0-0.3,0-0.4c0-0.5,0-0.9,0.1-1.4L17.5,17.9z"/>
+          <path fill="#FFFFFF" d="M91.8,52.5c0.8,5.8,5.6,8.5,11.1,8.5c6,0,10.2-4.7,13.3-4.7c2.7,0.2,4.7,2.4,4.8,5c0,5.1-10.4,10-19.2,10c-13.2,0-22-9.6-22-22.6c0-11.9,8.6-22.8,21.1-22.8c12.7,0,21.1,11.6,21.1,21.4c0,3.5-1.6,5.2-5.1,5.2L91.8,52.5z M110.2,44.6c-0.7-5.1-3.9-9-9.4-9c-5.2,0-8.7,4-9.3,9H110.2z"/>
+          <path fill="#FFFFFF" d="M166.3,64.2c0,3.9-2.5,6.5-5.9,6.5c-3.3,0-5.1-1.8-5.9-4.9c-2.2,3.6-6.8,5.4-10.8,5.4c-11.8,0-19.4-11-19.4-22.1c0-11.4,6.3-23.3,18.9-23.3c4.1,0,8.1,1.4,11.2,4.1v-16c0-3.9,2.4-6.5,5.9-6.5c3.4,0,5.9,2.6,5.9,6.5V64.2z M145.3,36.6c-6.1,0-9.1,6.5-9.1,12s3,11.8,9.1,11.8c6.4,0,9.2-6.5,9.2-12.2S151.6,36.6,145.3,36.6L145.3,36.6z"/>
+          <path fill="#FFFFFF" d="M185.3,15.1c0,3.7-2.9,6.7-6.6,6.8c-3.7-0.2-6.5-3.1-6.6-6.8c0-3.7,3-6.6,6.6-6.6C182.4,8.5,185.3,11.5,185.3,15.1L185.3,15.1z M172.8,32.8c0-3.9,2.5-6.5,5.9-6.5s5.9,2.6,5.9,6.5v31.4c0,3.9-2.4,6.5-5.9,6.5s-5.9-2.6-5.9-6.5V32.8z"/>
+          <path fill="#FFFFFF" d="M198.5,20.5c-0.4-1-0.6-2-0.6-3c0.1-3.4,2.9-6,6.3-5.9c2.8,0,4.5,1.8,5.5,4l12.6,34l12.7-34c1.1-2.2,2.8-4,5.5-4c3.4-0.1,6.2,2.5,6.3,5.9c0,1-0.2,2-0.6,3L228.4,66c-1.1,2.6-2.5,4.7-6,4.7s-5-2.1-6-4.7L198.5,20.5z"/>
+          <path fill="#FFFFFF" d="M285.6,63.1c0,3,0,7.7-5.6,7.7c-3.4,0-4.8-1.9-5.6-5c-2.7,3.5-6.8,5.5-11.2,5.5c-11,0-19.4-9.4-19.4-22.6c0-12.9,8.7-22.8,19.4-22.8c4.4-0.1,8.6,1.9,11.2,5.4c0.3-2.8,2.8-4.9,5.6-4.9c5.6,0,5.6,4.7,5.6,7.7V63.1z M264.8,60.5c6.1,0,9.1-6.2,9.1-11.8s-2.9-12-9.1-12c-6.5,0-9.3,6.4-9.3,12S258.5,60.5,264.8,60.5z"/>
+          <path fill="#FFFFFF" d="M292.2,32.2c-0.1-3.2,2.5-5.8,5.7-5.9c0.1,0,0.2,0,0.3,0c3.1,0,5.7,1.1,5.7,4.9h0.2c2.2-3.3,4.6-4.9,8.2-4.9c2.9,0,5.7,2,5.7,6.3c0,3.8-3.5,4.1-7,5.7s-7.1,3.2-7.1,7.8v18c0,3.9-2.5,6.5-5.9,6.5s-5.9-2.6-5.9-6.5L292.2,32.2z"/>
+          <path fill="#FFFFFF" d="M331.8,15.1c0,3.7-2.9,6.7-6.6,6.8c-3.7-0.1-6.6-3.1-6.6-6.8c0.1-3.7,3.2-6.5,6.9-6.4C328.9,8.9,331.7,11.7,331.8,15.1L331.8,15.1z M319.4,32.8c0-3.9,2.5-6.5,5.9-6.5s5.9,2.6,5.9,6.5v31.4c0,3.9-2.5,6.5-5.9,6.5s-5.9-2.6-5.9-6.5V32.8z"/>
+          <path fill="#FFFFFF" d="M366.9,38.9c-2.9,0-5.5-2.3-9.3-2.3c-6.7,0-9.9,6-9.9,12c0,5.8,3.5,11.8,9.9,11.8c2.9,0,7.4-2.5,8.7-2.5c2.8,0.1,5,2.3,5.1,5.1c0,6-10.1,8.1-14.4,8.1c-12.6,0-21.1-10.4-21.1-22.6c0-11.9,8.7-22.8,21.1-22.8c4.7,0,14.4,1.7,14.4,7.4C371.4,35.7,369.6,38.9,366.9,38.9z"/>
+        </svg>
+      </div>
+      <div class="divider-with-x">
+        <div class="line-left"></div>
+        <span class="x-mark">&times;</span>
+        <div class="line-right"></div>
+      </div>
+      <div class="invite-label">Le invitan cordialmente</div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+      <h1 class="event-title">
+        Presentaci&oacute;n exclusiva de<br>l&iacute;neas de productos
+      </h1>
+      <p class="event-subtitle">
+        <strong>MediVaric</strong>, marca l&iacute;der en Colombia de medias de compresi&oacute;n y prendas terap&eacute;uticas,
+        se une a <strong>AltusPoint</strong> (distribuidor oficial en Venezuela) para invitarlos a una
+        presentaci&oacute;n exclusiva de sus l&iacute;neas de productos:
+      </p>
+
+      <!-- Product Lines -->
+      <div class="product-lines">
+        <span class="product-pill pill-compresion">
+          <span class="pill-icon">
+            <!-- Footprints icon (Lucide) -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5BB5A2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/></svg>
+          </span>
+          Medias de Compresi&oacute;n
+        </span>
+        <span class="product-pill pill-ortesis">
+          <span class="pill-icon">
+            <!-- Bone icon (Lucide) -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6B8EC2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 10c.7-.7 1.69 0 2.5 0a2.5 2.5 0 1 0 0-5 .5.5 0 0 1-.5-.5 2.5 2.5 0 1 0-5 0c0 .81.7 1.8 0 2.5l-7 7c-.7.7-1.69 0-2.5 0a2.5 2.5 0 0 0 0 5c.28 0 .5.22.5.5a2.5 2.5 0 1 0 5 0c0-.81-.7-1.8 0-2.5Z"/></svg>
+          </span>
+          &Oacute;rtesis
+        </span>
+        <span class="product-pill pill-copper">
+          <span class="pill-icon">
+            <!-- Sparkles icon (Lucide) -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5BA8BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/></svg>
+          </span>
+          Copper Silhouette
+        </span>
+        <span class="product-pill pill-mom">
+          <span class="pill-icon">
+            <!-- Baby icon (Lucide) -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="#E8A0BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"/><path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"/></svg>
+          </span>
+          Copper Mom
+        </span>
+      </div>
+
+      <!-- Event Details -->
+      <div class="details-card">
+        <div class="detail-row">
+          <div class="detail-icon icon-date">
+            <!-- Calendar icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0B1D4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+          </div>
+          <div class="detail-text">
+            <div class="detail-label">Fecha</div>
+            <div class="detail-value">Mi&eacute;rcoles, 4 de Marzo de 2026</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon icon-time">
+            <!-- Clock icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5BB5A2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="detail-text">
+            <div class="detail-label">Hora</div>
+            <div class="detail-value">3:00 p.m.</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon icon-location">
+            <!-- MapPin icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0B1D4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="detail-text">
+            <div class="detail-label">Lugar</div>
+            <div class="detail-value">Sal&oacute;n de la Sociedad M&eacute;dica</div>
+            <div class="detail-extra">Centro Cl&iacute;nico San Crist&oacute;bal &middot; Urb. Santa In&eacute;s, San Crist&oacute;bal</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RSVP -->
+      <div class="rsvp-section">
+        <p class="rsvp-text">
+          Cupos limitados. Confirme su asistencia antes del 2 de marzo.
+        </p>
+        <a href="https://wa.me/584147114583?text=Confirmo%20asistencia!" class="rsvp-button">
+          Confirmar Asistencia
+        </a>
+        <br>
+        <a href="https://wa.me/584147114583?text=Confirmo%20asistencia!" class="rsvp-whatsapp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          +58 414-711-4583
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-logos">
+        <img src="/images/logo.png" alt="AltusPoint" class="footer-logo-ap">
+        <div class="footer-sep"></div>
+        <!-- MediVaric SVG small footer version -->
+        <svg class="footer-logo-mv" viewBox="0 0 380.3 78.5" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#0060A1" opacity="0.7" d="M12.1,0C12.1,0,0,0,0,12.1v54.4c0,0,0,12.1,12.1,12.1h340c0,0,12.1,0,12.1-12.1V12.1c0,0,0-12.1-12.1-12.1L12.1,0z"/>
+          <path fill="#009C98" opacity="0.7" d="M380.3,66.5V12.1c0,0,0-12.1-12.1-12.1H192.1v78.5h176.1C368.2,78.5,380.3,78.5,380.3,66.5"/>
+          <path fill="rgba(255,255,255,0.7)" d="M17.5,17.9c0.9-3.7,4.2-6.3,8-6.3c3.7,0,7,2.4,8.2,5.9l9.6,32.3h0.2l9.6-32.3c1.2-3.5,4.5-5.8,8.2-5.9c3.8,0,7.1,2.6,8,6.3l7.6,45.5c0.1,0.5,0.1,0.9,0.1,1.4c0.1,3.1-2.3,5.7-5.4,5.9c-0.2,0-0.3,0-0.5,0c-4.2,0-5.8-1.9-6.4-5.7l-4.8-33.2h-0.2L49.9,66c-0.6,2-2.1,4.7-6.5,4.7s-6-2.8-6.5-4.7l-9.8-34.2h-0.1L22.1,65c-0.6,3.8-2.2,5.7-6.4,5.7c-3.1,0.1-5.8-2.3-5.9-5.4c0-0.1,0-0.3,0-0.4c0-0.5,0-0.9,0.1-1.4L17.5,17.9z"/>
+          <path fill="rgba(255,255,255,0.7)" d="M91.8,52.5c0.8,5.8,5.6,8.5,11.1,8.5c6,0,10.2-4.7,13.3-4.7c2.7,0.2,4.7,2.4,4.8,5c0,5.1-10.4,10-19.2,10c-13.2,0-22-9.6-22-22.6c0-11.9,8.6-22.8,21.1-22.8c12.7,0,21.1,11.6,21.1,21.4c0,3.5-1.6,5.2-5.1,5.2L91.8,52.5z M110.2,44.6c-0.7-5.1-3.9-9-9.4-9c-5.2,0-8.7,4-9.3,9H110.2z"/>
+          <path fill="rgba(255,255,255,0.7)" d="M166.3,64.2c0,3.9-2.5,6.5-5.9,6.5c-3.3,0-5.1-1.8-5.9-4.9c-2.2,3.6-6.8,5.4-10.8,5.4c-11.8,0-19.4-11-19.4-22.1c0-11.4,6.3-23.3,18.9-23.3c4.1,0,8.1,1.4,11.2,4.1v-16c0-3.9,2.4-6.5,5.9-6.5c3.4,0,5.9,2.6,5.9,6.5V64.2z M145.3,36.6c-6.1,0-9.1,6.5-9.1,12s3,11.8,9.1,11.8c6.4,0,9.2-6.5,9.2-12.2S151.6,36.6,145.3,36.6L145.3,36.6z"/>
+          <path fill="rgba(255,255,255,0.7)" d="M185.3,15.1c0,3.7-2.9,6.7-6.6,6.8c-3.7-0.2-6.5-3.1-6.6-6.8c0-3.7,3-6.6,6.6-6.6C182.4,8.5,185.3,11.5,185.3,15.1L185.3,15.1z M172.8,32.8c0-3.9,2.5-6.5,5.9-6.5s5.9,2.6,5.9,6.5v31.4c0,3.9-2.4,6.5-5.9,6.5s-5.9-2.6-5.9-6.5V32.8z"/>
+          <path fill="rgba(255,255,255,0.7)" d="M198.5,20.5c-0.4-1-0.6-2-0.6-3c0.1-3.4,2.9-6,6.3-5.9c2.8,0,4.5,1.8,5.5,4l12.6,34l12.7-34c1.1-2.2,2.8-4,5.5-4c3.4-0.1,6.2,2.5,6.3,5.9c0,1-0.2,2-0.6,3L228.4,66c-1.1,2.6-2.5,4.7-6,4.7s-5-2.1-6-4.7L198.5,20.5z"/>
+          <path fill="rgba(255,255,255,0.7)" d="M285.6,63.1c0,3,0,7.7-5.6,7.7c-3.4,0-4.8-1.9-5.6-5c-2.7,3.5-6.8,5.5-11.2,5.5c-11,0-19.4-9.4-19.4-22.6c0-12.9,8.7-22.8,19.4-22.8c4.4-0.1,8.6,1.9,11.2,5.4c0.3-2.8,2.8-4.9,5.6-4.9c5.6,0,5.6,4.7,5.6,7.7V63.1z M264.8,60.5c6.1,0,9.1-6.2,9.1-11.8s-2.9-12-9.1-12c-6.5,0-9.3,6.4-9.3,12S258.5,60.5,264.8,60.5z"/>
+          <path fill="rgba(255,255,255,0.7)" d="M292.2,32.2c-0.1-3.2,2.5-5.8,5.7-5.9c0.1,0,0.2,0,0.3,0c3.1,0,5.7,1.1,5.7,4.9h0.2c2.2-3.3,4.6-4.9,8.2-4.9c2.9,0,5.7,2,5.7,6.3c0,3.8-3.5,4.1-7,5.7s-7.1,3.2-7.1,7.8v18c0,3.9-2.5,6.5-5.9,6.5s-5.9-2.6-5.9-6.5L292.2,32.2z"/>
+          <path fill="rgba(255,255,255,0.7)" d="M331.8,15.1c0,3.7-2.9,6.7-6.6,6.8c-3.7-0.1-6.6-3.1-6.6-6.8c0.1-3.7,3.2-6.5,6.9-6.4C328.9,8.9,331.7,11.7,331.8,15.1L331.8,15.1z M319.4,32.8c0-3.9,2.5-6.5,5.9-6.5s5.9,2.6,5.9,6.5v31.4c0,3.9-2.5,6.5-5.9,6.5s-5.9-2.6-5.9-6.5V32.8z"/>
+          <path fill="rgba(255,255,255,0.7)" d="M366.9,38.9c-2.9,0-5.5-2.3-9.3-2.3c-6.7,0-9.9,6-9.9,12c0,5.8,3.5,11.8,9.9,11.8c2.9,0,7.4-2.5,8.7-2.5c2.8,0.1,5,2.3,5.1,5.1c0,6-10.1,8.1-14.4,8.1c-12.6,0-21.1-10.4-21.1-22.6c0-11.9,8.7-22.8,21.1-22.8c4.7,0,14.4,1.7,14.4,7.4C371.4,35.7,369.6,38.9,366.9,38.9z"/>
+        </svg>
+      </div>
+      <div class="footer-text">
+        AltusPoint, C.A. &middot; Distribuidor Oficial MediVaric en Venezuela<br>
+        <a href="https://altuspoint.health">altuspoint.health</a> &nbsp;&middot;&nbsp; <a href="https://medivaric.com.co">medivaric.com.co</a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

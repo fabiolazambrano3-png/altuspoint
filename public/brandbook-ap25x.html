@@ -1,0 +1,1937 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>AltusPoint — Brandbook 2025</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+    :root {
+      --navy: #0B1D4F;
+      --blue: #6B8EC2;
+      --light-blue: #E8EFF8;
+      --green-primary: #7AB648;
+      --green-light: #A8D86E;
+      --green-dark: #4A8C2A;
+      --teal: #5BB5A2;
+      --white: #FFFFFF;
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-500: #6B7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--gray-900);
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    /* ===== PAGE STRUCTURE ===== */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 60px;
+      page-break-after: always;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .page-number {
+      position: absolute;
+      bottom: 30px;
+      right: 60px;
+      font-size: 12px;
+      color: var(--gray-300);
+      font-weight: 500;
+      letter-spacing: 2px;
+    }
+
+    /* ===== COVER PAGE ===== */
+    .cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--navy) 0%, #1a3a7a 50%, var(--blue) 100%);
+      color: var(--white);
+      min-height: 100vh;
+      padding: 60px;
+    }
+
+    .cover-logo {
+      margin-bottom: 60px;
+    }
+
+    .cover-logo .logo-text {
+      font-size: 72px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      line-height: 1;
+    }
+
+    .cover-logo .altus {
+      color: var(--white);
+      border-top: 3px solid var(--white);
+      border-bottom: 3px solid var(--white);
+      border-left: 3px solid var(--white);
+      border-right: none;
+      padding: 8px 16px 8px 16px;
+      display: inline-block;
+    }
+
+    .cover-logo .point {
+      font-weight: 300;
+      background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0.4) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cover h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: 12px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+    }
+
+    .cover .subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .cover .divider {
+      width: 60px;
+      height: 2px;
+      background: var(--blue);
+      margin: 40px auto;
+    }
+
+    .cover .year {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 6px;
+    }
+
+    /* ===== SECTION HEADERS ===== */
+    .section-number {
+      font-size: 80px;
+      font-weight: 900;
+      color: var(--light-blue);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--blue);
+      margin-bottom: 40px;
+      font-weight: 500;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--navy), var(--blue));
+      margin-bottom: 40px;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    h4 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 15px;
+      color: var(--gray-700);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .lead {
+      font-size: 18px;
+      color: var(--gray-700);
+      line-height: 1.9;
+      font-weight: 300;
+    }
+
+    .highlight-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--navy);
+      font-style: italic;
+      line-height: 1.5;
+      padding: 30px 0;
+      border-left: 4px solid var(--blue);
+      padding-left: 30px;
+      margin: 30px 0;
+    }
+
+    /* ===== GRID LAYOUTS ===== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin: 30px 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: var(--gray-50);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .card-navy {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .card-navy h4, .card-navy p {
+      color: var(--white);
+    }
+
+    .card-navy p {
+      opacity: 0.8;
+    }
+
+    .card-blue {
+      background: var(--light-blue);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .card-outlined {
+      border: 2px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    /* ===== COLOR SWATCHES ===== */
+    .color-swatch {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .color-swatch .swatch-color {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .color-swatch .swatch-info {
+      padding: 20px;
+      background: var(--white);
+    }
+
+    .color-swatch .swatch-name {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--gray-900);
+      margin-bottom: 4px;
+    }
+
+    .color-swatch .swatch-hex {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 13px;
+      color: var(--gray-500);
+    }
+
+    .color-swatch .swatch-use {
+      font-size: 12px;
+      color: var(--gray-500);
+      margin-top: 8px;
+    }
+
+    /* ===== LOGO DISPLAY ===== */
+    .logo-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+      border-radius: 16px;
+      margin: 20px 0;
+    }
+
+    .logo-display.bg-white {
+      background: var(--white);
+      border: 2px solid var(--gray-200);
+    }
+
+    .logo-display.bg-navy {
+      background: var(--navy);
+    }
+
+    .logo-display.bg-gray {
+      background: var(--gray-100);
+    }
+
+    .logo-display .logo-mock {
+      display: flex;
+      align-items: baseline;
+      gap: 0;
+    }
+
+    .logo-mock .altus-box {
+      border-top: 3px solid currentColor;
+      border-bottom: 3px solid currentColor;
+      border-left: 3px solid currentColor;
+      border-right: none;
+      padding: 6px 12px 6px 12px;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      line-height: 1;
+    }
+
+    .logo-mock .point-text {
+      font-size: 36px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      line-height: 1;
+      background: linear-gradient(90deg, var(--navy) 0%, var(--blue) 40%, var(--blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo-mock .point-o {
+      display: inline-block;
+      width: 0.75em;
+      height: 0.75em;
+      border: 2.5px solid currentColor;
+      border-radius: 50%;
+      vertical-align: baseline;
+      position: relative;
+      top: -0.05em;
+    }
+
+    .logo-mock .ca-text {
+      font-size: 14px;
+      font-weight: 400;
+      margin-left: 4px;
+      opacity: 0.7;
+    }
+
+    .logo-mock.navy-blue .altus-box {
+      color: var(--navy);
+    }
+
+    .logo-mock.navy-blue .point-text {
+      background: linear-gradient(90deg, var(--navy) 0%, var(--blue) 40%, var(--blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo-mock.white-all .altus-box {
+      color: var(--white);
+    }
+
+    .logo-mock.white-all .point-text {
+      background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6) 60%, rgba(255,255,255,0.5) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo-mock.mono-navy .altus-box {
+      color: var(--navy);
+    }
+
+    .logo-mock.mono-navy .point-text {
+      background: linear-gradient(90deg, var(--navy) 0%, var(--navy) 60%, rgba(11,29,79,0.6) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===== SPACING DIAGRAM ===== */
+    .spacing-diagram {
+      background: var(--gray-50);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .spacing-diagram .spacing-box {
+      display: inline-block;
+      border: 2px dashed var(--blue);
+      padding: 40px 60px;
+      position: relative;
+    }
+
+    .spacing-label {
+      font-size: 11px;
+      color: var(--blue);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ===== DO/DON'T ===== */
+    .do-dont-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 20px 0;
+    }
+
+    .do-box, .dont-box {
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+    }
+
+    .do-box {
+      background: #f0fdf4;
+      border: 2px solid #86efac;
+    }
+
+    .dont-box {
+      background: #fef2f2;
+      border: 2px solid #fca5a5;
+    }
+
+    .do-box::before {
+      content: '✓';
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background: #22c55e;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .dont-box::before {
+      content: '✗';
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background: #ef4444;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .do-box .label, .dont-box .label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .do-box .label { color: #22c55e; }
+    .dont-box .label { color: #ef4444; }
+
+    .do-box p, .dont-box p {
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    /* ===== TABLE OF CONTENTS ===== */
+    .toc-item {
+      display: flex;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .toc-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--light-blue);
+      width: 60px;
+      flex-shrink: 0;
+    }
+
+    .toc-content {
+      flex: 1;
+    }
+
+    .toc-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .toc-desc {
+      font-size: 13px;
+      color: var(--gray-500);
+      margin-top: 2px;
+    }
+
+    .toc-page {
+      font-size: 14px;
+      color: var(--gray-300);
+      font-weight: 600;
+    }
+
+    /* ===== ARCHETYPE CARDS ===== */
+    .archetype-card {
+      text-align: center;
+      padding: 40px 24px;
+      border-radius: 16px;
+      background: var(--gray-50);
+    }
+
+    .archetype-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .archetype-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .archetype-desc {
+      font-size: 13px;
+      color: var(--gray-500);
+      line-height: 1.6;
+    }
+
+    /* ===== VALUE PILLS ===== */
+    .value-pill {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      margin: 4px;
+    }
+
+    .value-pill.primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .value-pill.secondary {
+      background: var(--light-blue);
+      color: var(--navy);
+    }
+
+    .value-pill.outline {
+      border: 2px solid var(--gray-200);
+      color: var(--gray-700);
+    }
+
+    /* ===== TONE METER ===== */
+    .tone-meter {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .tone-meter .meter-label {
+      font-size: 13px;
+      color: var(--gray-500);
+      width: 120px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .tone-meter .meter-bar {
+      flex: 1;
+      height: 8px;
+      background: var(--gray-100);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .tone-meter .meter-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--navy), var(--blue));
+    }
+
+    .tone-meter .meter-label-right {
+      font-size: 13px;
+      color: var(--gray-500);
+      width: 120px;
+      flex-shrink: 0;
+    }
+
+    /* ===== AUDIENCE CARDS ===== */
+    .audience-card {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .audience-header {
+      padding: 20px 24px;
+      color: var(--white);
+    }
+
+    .audience-body {
+      padding: 24px;
+      background: var(--white);
+    }
+
+    .audience-body ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .audience-body li {
+      font-size: 13px;
+      color: var(--gray-700);
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .audience-body li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    /* ===== PRODUCT LINE ===== */
+    .product-line {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 20px;
+      border-radius: 12px;
+      margin: 6px 0;
+      transition: all 0.2s;
+    }
+
+    .product-line .line-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .product-line .line-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .product-line .line-desc {
+      font-size: 12px;
+      color: var(--gray-500);
+      margin-left: auto;
+    }
+
+    /* ===== TYPOGRAPHY SPECIMEN ===== */
+    .type-specimen {
+      margin: 20px 0;
+      padding: 30px;
+      background: var(--gray-50);
+      border-radius: 16px;
+    }
+
+    .type-specimen .specimen-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--blue);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .type-specimen .specimen-text {
+      color: var(--navy);
+    }
+
+    /* ===== SOCIAL MEDIA TEMPLATE ===== */
+    .social-template {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .social-template .template-header {
+      padding: 12px 16px;
+      background: var(--gray-50);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .social-template .template-body {
+      padding: 24px;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* ===== PRINT STYLES ===== */
+    @media print {
+      .page {
+        padding: 40px;
+        page-break-after: always;
+      }
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .page { padding: 40px 24px; }
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .do-dont-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 32px; }
+      .section-number { font-size: 60px; }
+      .cover-logo .logo-text { font-size: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================== -->
+  <!-- COVER PAGE -->
+  <!-- =========================================== -->
+  <div class="cover">
+    <div class="cover-logo" style="margin-bottom: 60px;">
+      <img src="images/logo.png" alt="AltusPoint" style="max-width: 480px; width: 100%; height: auto; filter: brightness(0) invert(1);">
+    </div>
+    <div class="divider"></div>
+    <h1>Brand Book</h1>
+    <p class="subtitle">Manual de Identidad de Marca</p>
+    <div class="divider" style="margin-top: 60px;"></div>
+    <p class="year">2025</p>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- TABLE OF CONTENTS -->
+  <!-- =========================================== -->
+  <div class="page">
+    <div class="section-number">00</div>
+    <div class="section-title">Contenido</div>
+    <div class="section-subtitle">Table of Contents</div>
+    <div class="section-divider"></div>
+
+    <div class="toc-item">
+      <div class="toc-number">01</div>
+      <div class="toc-content">
+        <div class="toc-title">Nuestra Historia</div>
+        <div class="toc-desc">Origen, misión, visión y propósito</div>
+      </div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-number">02</div>
+      <div class="toc-content">
+        <div class="toc-title">Esencia de Marca</div>
+        <div class="toc-desc">Personalidad, arquetipos y valores</div>
+      </div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-number">03</div>
+      <div class="toc-content">
+        <div class="toc-title">Identidad Visual</div>
+        <div class="toc-desc">Logo, variaciones y zona de protección</div>
+      </div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-number">04</div>
+      <div class="toc-content">
+        <div class="toc-title">Paleta de Colores</div>
+        <div class="toc-desc">Colores primarios, secundarios y de apoyo</div>
+      </div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-number">05</div>
+      <div class="toc-content">
+        <div class="toc-title">Tipografía</div>
+        <div class="toc-desc">Familias tipográficas y jerarquía</div>
+      </div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-number">06</div>
+      <div class="toc-content">
+        <div class="toc-title">Voz y Tono</div>
+        <div class="toc-desc">Cómo habla AltusPoint</div>
+      </div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-number">07</div>
+      <div class="toc-content">
+        <div class="toc-title">Audiencias</div>
+        <div class="toc-desc">Segmentos de público y cómo conectar con cada uno</div>
+      </div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-number">08</div>
+      <div class="toc-content">
+        <div class="toc-title">Líneas de Producto</div>
+        <div class="toc-desc">Categorías y organización visual</div>
+      </div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-number">09</div>
+      <div class="toc-content">
+        <div class="toc-title">Aplicaciones Digitales</div>
+        <div class="toc-desc">Redes sociales, web y material digital</div>
+      </div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-number">10</div>
+      <div class="toc-content">
+        <div class="toc-title">Usos Correctos e Incorrectos</div>
+        <div class="toc-desc">Lo que se debe y no se debe hacer con la marca</div>
+      </div>
+    </div>
+
+    <div class="page-number">02</div>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- 01. NUESTRA HISTORIA -->
+  <!-- =========================================== -->
+  <div class="page">
+    <div class="section-number">01</div>
+    <div class="section-title">Nuestra Historia</div>
+    <div class="section-subtitle">Our Story</div>
+    <div class="section-divider"></div>
+
+    <p class="lead">
+      AltusPoint nace de más de 30 años de experiencia en el sector médico venezolano.
+      Fundada por <strong>Fabiola Rosas</strong> y <strong>Maximiliano Zambrano</strong> bajo el nombre
+      original de <em>Innovaciones Médicas</em>, la empresa ha sido un pilar en la distribución de
+      materiales y equipos médicos de alta calidad en Venezuela.
+    </p>
+
+    <p>
+      Con el paso de los años, la visión creció. Lo que comenzó como una empresa familiar dedicada a
+      ofrecer soluciones médicas se transformó en <strong>AltusPoint</strong> — una marca que representa
+      excelencia, innovación y compromiso con la seguridad en el sector salud. El nombre "Altus"
+      (del latín: elevado, alto) refleja nuestra aspiración de llevar siempre la atención médica a un
+      nivel superior, mientras que "Point" simboliza el punto preciso de conexión entre los profesionales
+      de la salud y los insumos que necesitan.
+    </p>
+
+    <div class="highlight-text">
+      "Nuestro compromiso es con la seguridad de cada paciente y cada profesional de la salud."
+    </div>
+
+    <div class="grid-2" style="margin-top: 40px;">
+      <div class="card-navy">
+        <h4>Misión</h4>
+        <p>
+          Brindar de forma segura los mejores materiales para procesos médicos, conectando a los
+          profesionales de la salud con productos de calidad que garanticen el bienestar de sus pacientes.
+        </p>
+      </div>
+      <div class="card-navy">
+        <h4>Visión</h4>
+        <p>
+          Ser la empresa líder a nivel nacional en distribución y asesoría de productos médicos,
+          reconocida por su excelencia, innovación y compromiso con la seguridad.
+        </p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 30px; text-align: center;">
+      <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: var(--blue); margin-bottom: 8px; font-weight: 600;">Razón Social</p>
+      <p style="font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 4px;">AltusPoint, C.A.</p>
+      <p style="font-size: 14px; color: var(--gray-500); margin: 0;">RIF: J-501636583 — Caracas, Venezuela</p>
+    </div>
+
+    <div class="page-number">03</div>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- 02. ESENCIA DE MARCA -->
+  <!-- =========================================== -->
+  <div class="page">
+    <div class="section-number">02</div>
+    <div class="section-title">Esencia de Marca</div>
+    <div class="section-subtitle">Brand Essence</div>
+    <div class="section-divider"></div>
+
+    <p class="lead">
+      AltusPoint no es solo una distribuidora. Es un aliado estratégico del sector salud que combina
+      sabiduría, protección e innovación para transformar la experiencia de adquisición de productos médicos.
+    </p>
+
+    <h3 style="margin-top: 50px;">Arquetipos de Marca</h3>
+    <p>Tres arquetipos definen quiénes somos y cómo nos percibe el mundo:</p>
+
+    <div class="grid-3" style="margin-top: 20px;">
+      <div class="archetype-card">
+        <div class="archetype-icon">🧠</div>
+        <div class="archetype-name">El Sabio</div>
+        <div class="archetype-desc">
+          Más de 30 años de experiencia nos respaldan. Compartimos conocimiento, asesoramos con
+          autoridad y educamos a nuestros clientes sobre las mejores opciones disponibles.
+        </div>
+      </div>
+      <div class="archetype-card" style="background: var(--light-blue);">
+        <div class="archetype-icon">🛡️</div>
+        <div class="archetype-name">El Protector</div>
+        <div class="archetype-desc">
+          La seguridad es nuestra prioridad. Cada producto que distribuimos cumple con los más altos
+          estándares de calidad porque el bienestar de los pacientes depende de ello.
+        </div>
+      </div>
+      <div class="archetype-card">
+        <div class="archetype-icon">💡</div>
+        <div class="archetype-name">El Innovador</div>
+        <div class="archetype-desc">
+          Estamos constantemente buscando las últimas tecnologías y avances en material médico
+          para ofrecer soluciones modernas y efectivas.
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 50px;">Valores de Marca</h3>
+
+    <div style="margin-top: 16px; text-align: center;">
+      <span class="value-pill primary">Seguridad</span>
+      <span class="value-pill primary">Confianza</span>
+      <span class="value-pill primary">Calidad</span>
+      <span class="value-pill secondary">Conocimiento</span>
+      <span class="value-pill secondary">Innovación</span>
+      <span class="value-pill secondary">Transparencia</span>
+      <span class="value-pill outline">Honestidad</span>
+      <span class="value-pill outline">Pasión</span>
+      <span class="value-pill outline">Exclusividad</span>
+      <span class="value-pill outline">Responsabilidad</span>
+      <span class="value-pill outline">Servicio</span>
+    </div>
+
+    <h3 style="margin-top: 50px;">Territorios Emocionales</h3>
+    <p>Las emociones que evocamos y buscamos generar en cada interacción:</p>
+
+    <div class="grid-3" style="margin-top: 16px;">
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 32px; margin-bottom: 8px;">🔒</div>
+        <h4 style="font-size: 15px;">Seguridad y Confianza</h4>
+        <p style="font-size: 13px;">"Estás en buenas manos con AltusPoint"</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 32px; margin-bottom: 8px;">✨</div>
+        <h4 style="font-size: 15px;">Asombro y Conocimiento</h4>
+        <p style="font-size: 13px;">"Siempre traemos lo más avanzado"</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 32px; margin-bottom: 8px;">💚</div>
+        <h4 style="font-size: 15px;">Bienestar y Cuidado</h4>
+        <p style="font-size: 13px;">"Tu salud es nuestra prioridad"</p>
+      </div>
+    </div>
+
+    <div class="page-number">04</div>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- 03. IDENTIDAD VISUAL — LOGO -->
+  <!-- =========================================== -->
+  <div class="page">
+    <div class="section-number">03</div>
+    <div class="section-title">Identidad Visual</div>
+    <div class="section-subtitle">Visual Identity — Logo</div>
+    <div class="section-divider"></div>
+
+    <p class="lead">
+      El logotipo de AltusPoint es el elemento más reconocible de nuestra marca. Debe ser utilizado
+      de manera consistente para mantener una imagen sólida y profesional.
+    </p>
+
+    <h3 style="margin-top: 40px;">Logo Principal</h3>
+    <p>
+      El logo principal presenta "ALTUS" en tipografía bold enmarcado por líneas horizontales superiores e inferiores
+      y una línea vertical izquierda que forman un recuadro abierto — las líneas no se cierran a la derecha,
+      permitiendo que el texto fluya naturalmente hacia "POINT". El color se difumina gradualmente del navy
+      profundo (#0B1D4F) hacia el azul medio (#6B8EC2), creando una transición visual elegante.
+      La "O" de POINT es un círculo perfecto que aporta un toque distintivo.
+    </p>
+
+    <div class="logo-display bg-white">
+      <img src="images/logo.png" alt="AltusPoint Logo Principal" style="max-width: 400px; width: 100%; height: auto;">
+    </div>
+    <p style="text-align: center; font-size: 12px; color: var(--gray-500); text-transform: uppercase; letter-spacing: 2px;">
+      Versión principal — Fondo blanco o claro
+    </p>
+
+    <h3 style="margin-top: 40px;">Versiones del Logo</h3>
+
+    <div class="grid-2">
+      <div>
+        <div class="logo-display bg-navy" style="min-height: 140px;">
+          <img src="images/logo.png" alt="AltusPoint Logo Negativo" style="max-width: 300px; width: 100%; height: auto; filter: brightness(0) invert(1);">
+        </div>
+        <p style="text-align: center; font-size: 12px; color: var(--gray-500); margin-top: 8px;">
+          Versión negativa — Fondo oscuro
+        </p>
+      </div>
+      <div>
+        <div class="logo-display bg-gray" style="min-height: 140px;">
+          <img src="images/logo.png" alt="AltusPoint Logo Monocromático" style="max-width: 300px; width: 100%; height: auto; filter: saturate(0) brightness(0.3);">
+        </div>
+        <p style="text-align: center; font-size: 12px; color: var(--gray-500); margin-top: 8px;">
+          Versión monocromática — Navy
+        </p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 40px;">Variaciones Regionales</h3>
+    <p>Para operaciones en diferentes países, se utiliza un sufijo regional junto al logo:</p>
+
+    <div class="grid-2">
+      <div class="card" style="text-align: center;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <img src="images/logo.png" alt="AltusPoint VE" style="max-width: 220px; width: 100%; height: auto;">
+          <span style="font-size: 22px; font-weight: 500; color: var(--blue); letter-spacing: 2px;">VE</span>
+        </div>
+        <p style="font-size: 12px; color: var(--gray-500); margin-top: 12px;">Venezuela</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <img src="images/logo.png" alt="AltusPoint CO" style="max-width: 220px; width: 100%; height: auto;">
+          <span style="font-size: 22px; font-weight: 500; color: var(--blue); letter-spacing: 2px;">CO</span>
+        </div>
+        <p style="font-size: 12px; color: var(--gray-500); margin-top: 12px;">Colombia</p>
+      </div>
+    </div>
+
+    <div class="page-number">05</div>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- 03b. LOGO — ZONA DE PROTECCIÓN Y TAMAÑO -->
+  <!-- =========================================== -->
+  <div class="page">
+    <div class="section-number">03</div>
+    <div class="section-title">Zona de Protección</div>
+    <div class="section-subtitle">Clear Space & Minimum Size</div>
+    <div class="section-divider"></div>
+
+    <h3>Zona de Protección</h3>
+    <p>
+      El logo debe mantener un espacio libre a su alrededor equivalente a la altura de la letra "U" del logo.
+      Ningún elemento gráfico o textual debe invadir esta zona para garantizar la legibilidad e impacto visual.
+      Nótese que el recuadro del logo es <strong>abierto a la derecha</strong> — las líneas horizontales
+      no se cierran, permitiendo la transición fluida hacia "POINT".
+    </p>
+
+    <div class="spacing-diagram" style="margin: 30px 0;">
+      <div style="position: relative; display: inline-block;">
+        <div style="border: 2px dashed var(--blue); padding: 50px 70px; border-radius: 8px; position: relative;">
+          <img src="images/logo.png" alt="AltusPoint Logo - Zona de Protección" style="max-width: 280px; width: 100%; height: auto;">
+          <!-- Labels -->
+          <div style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%);">
+            <span class="spacing-label">U</span>
+          </div>
+          <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);">
+            <span class="spacing-label">U</span>
+          </div>
+          <div style="position: absolute; top: 50%; left: 14px; transform: translateY(-50%);">
+            <span class="spacing-label">U</span>
+          </div>
+          <div style="position: absolute; top: 50%; right: 14px; transform: translateY(-50%);">
+            <span class="spacing-label">U</span>
+          </div>
+        </div>
+      </div>
+      <p style="font-size: 12px; color: var(--gray-500); margin-top: 16px;">
+        La unidad "U" equivale a la altura de la letra U dentro de "ALTUS"
+      </p>
+    </div>
+
+    <div class="grid-2" style="margin-top: 40px;">
+      <div>
+        <h3>Tamaño Mínimo</h3>
+        <p>
+          Para garantizar la legibilidad del logo en todas las aplicaciones, se establecen los siguientes
+          tamaños mínimos:
+        </p>
+        <div class="card" style="margin-top: 16px;">
+          <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--gray-200);">
+            <span style="font-size: 13px; font-weight: 600;">Impreso</span>
+            <span style="font-size: 13px; color: var(--gray-500);">30mm de ancho</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--gray-200);">
+            <span style="font-size: 13px; font-weight: 600;">Digital</span>
+            <span style="font-size: 13px; color: var(--gray-500);">120px de ancho</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 12px 0;">
+            <span style="font-size: 13px; font-weight: 600;">Favicon</span>
+            <span style="font-size: 13px; color: var(--gray-500);">Usar solo el recuadro "A"</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3>Elemento Icónico</h3>
+        <p>
+          Cuando el espacio sea muy limitado (favicon, avatar de redes sociales), se puede utilizar el
+          elemento icónico simplificado: la letra "A" dentro del recuadro característico.
+        </p>
+        <div class="card" style="text-align: center; margin-top: 16px;">
+          <div style="display: inline-block; border: 3px solid var(--navy); padding: 12px 18px; font-size: 32px; font-weight: 800; color: var(--navy);">A</div>
+          <p style="font-size: 12px; color: var(--gray-500); margin-top: 12px;">
+            Versión icónica para espacios reducidos
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-number">06</div>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- 04. PALETA DE COLORES -->
+  <!-- =========================================== -->
+  <div class="page">
+    <div class="section-number">04</div>
+    <div class="section-title">Paleta de Colores</div>
+    <div class="section-subtitle">Color Palette</div>
+    <div class="section-divider"></div>
+
+    <p class="lead">
+      Nuestra paleta de colores transmite confianza, profesionalismo y cercanía con el sector salud.
+      Los azules representan autoridad y estabilidad, mientras que los verdes conectan con la salud y el bienestar.
+    </p>
+
+    <h3 style="margin-top: 40px;">Colores Primarios</h3>
+    <p>Estos son los colores principales del logo y de toda la comunicación de marca.</p>
+
+    <div class="grid-3" style="margin-top: 20px;">
+      <div class="color-swatch">
+        <div class="swatch-color" style="background: #0B1D4F;">
+          <span style="color: white; font-size: 13px; font-weight: 500;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Navy / Azul Oscuro</div>
+          <div class="swatch-hex">#0B1D4F</div>
+          <div class="swatch-hex">RGB: 11, 29, 79</div>
+          <div class="swatch-hex">CMYK: 100, 85, 35, 30</div>
+          <div class="swatch-use">Logo "ALTUS", títulos, fondos principales</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-color" style="background: #6B8EC2;">
+          <span style="color: white; font-size: 13px; font-weight: 500;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Azul Claro</div>
+          <div class="swatch-hex">#6B8EC2</div>
+          <div class="swatch-hex">RGB: 107, 142, 194</div>
+          <div class="swatch-hex">CMYK: 55, 30, 5, 0</div>
+          <div class="swatch-use">Logo "POINT", subtítulos, acentos</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-color" style="background: #E8EFF8;">
+          <span style="color: #0B1D4F; font-size: 13px; font-weight: 500;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Azul Hielo</div>
+          <div class="swatch-hex">#E8EFF8</div>
+          <div class="swatch-hex">RGB: 232, 239, 248</div>
+          <div class="swatch-hex">CMYK: 8, 3, 0, 0</div>
+          <div class="swatch-use">Fondos suaves, tarjetas, hover states</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 50px;">Colores Secundarios</h3>
+    <p>Utilizados en líneas de producto, elementos gráficos y comunicación complementaria. Estos verdes representan salud, vitalidad y bienestar.</p>
+
+    <div class="grid-4" style="margin-top: 20px;">
+      <div class="color-swatch">
+        <div class="swatch-color" style="background: #7AB648; height: 90px;">
+          <span style="color: white; font-size: 13px; font-weight: 500;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Verde Salud</div>
+          <div class="swatch-hex">#7AB648</div>
+          <div class="swatch-use">Categorías, CTAs secundarios</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-color" style="background: #A8D86E; height: 90px;">
+          <span style="color: #333; font-size: 13px; font-weight: 500;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Verde Claro</div>
+          <div class="swatch-hex">#A8D86E</div>
+          <div class="swatch-use">Acentos, badges, éxito</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-color" style="background: #5BB5A2; height: 90px;">
+          <span style="color: white; font-size: 13px; font-weight: 500;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Teal / Verde-Azul</div>
+          <div class="swatch-hex">#5BB5A2</div>
+          <div class="swatch-use">Transición, gráficos</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-color" style="background: #4A8C2A; height: 90px;">
+          <span style="color: white; font-size: 13px; font-weight: 500;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Verde Profundo</div>
+          <div class="swatch-hex">#4A8C2A</div>
+          <div class="swatch-use">Texto sobre verde claro</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 50px;">Color de Línea Materna</h3>
+    <p>Color dedicado exclusivamente a la línea de productos maternos. Transmite calidez, cuidado y feminidad.</p>
+
+    <div class="grid-4" style="margin-top: 20px;">
+      <div class="color-swatch">
+        <div class="swatch-color" style="background: #E8A0BF; height: 90px;">
+          <span style="color: white; font-size: 13px; font-weight: 500;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Rosa Materna</div>
+          <div class="swatch-hex">#E8A0BF</div>
+          <div class="swatch-use">Línea Materna, campañas gestacionales</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-color" style="background: #F4D5E5; height: 90px;">
+          <span style="color: #9B4D7A; font-size: 13px; font-weight: 500;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Rosa Claro</div>
+          <div class="swatch-hex">#F4D5E5</div>
+          <div class="swatch-use">Fondos suaves, tarjetas maternales</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-color" style="background: #C77BA3; height: 90px;">
+          <span style="color: white; font-size: 13px; font-weight: 500;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Rosa Profundo</div>
+          <div class="swatch-hex">#C77BA3</div>
+          <div class="swatch-use">Acentos, texto sobre rosa claro</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 50px;">Colores Neutros</h3>
+
+    <div class="grid-4" style="margin-top: 20px;">
+      <div class="color-swatch">
+        <div class="swatch-color" style="background: #FFFFFF; height: 70px; border-bottom: 1px solid #eee;">
+          <span style="color: #333; font-size: 13px;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Blanco</div>
+          <div class="swatch-hex">#FFFFFF</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-color" style="background: #F9FAFB; height: 70px;">
+          <span style="color: #333; font-size: 13px;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gris 50</div>
+          <div class="swatch-hex">#F9FAFB</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-color" style="background: #6B7280; height: 70px;">
+          <span style="color: white; font-size: 13px;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gris 500</div>
+          <div class="swatch-hex">#6B7280</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-color" style="background: #111827; height: 70px;">
+          <span style="color: white; font-size: 13px;">Aa</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Negro Suave</div>
+          <div class="swatch-hex">#111827</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 50px;">Proporciones de Uso</h3>
+    <div style="display: flex; height: 40px; border-radius: 8px; overflow: hidden; margin-top: 16px;">
+      <div style="flex: 5; background: var(--navy);"></div>
+      <div style="flex: 3; background: var(--blue);"></div>
+      <div style="flex: 2; background: var(--light-blue);"></div>
+      <div style="flex: 1; background: #7AB648;"></div>
+      <div style="flex: 0.5; background: #E8A0BF;"></div>
+      <div style="flex: 1; background: var(--white); border: 1px solid #eee;"></div>
+    </div>
+    <div style="display: flex; margin-top: 8px; font-size: 11px; color: var(--gray-500);">
+      <div style="flex: 5; text-align: center;">Navy 38%</div>
+      <div style="flex: 3; text-align: center;">Azul 24%</div>
+      <div style="flex: 2; text-align: center;">Azul Hielo 16%</div>
+      <div style="flex: 1; text-align: center;">Verde 8%</div>
+      <div style="flex: 0.5; text-align: center;">Rosa 4%</div>
+      <div style="flex: 1; text-align: center;">Blanco 10%</div>
+    </div>
+
+    <div class="page-number">07</div>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- 05. TIPOGRAFÍA -->
+  <!-- =========================================== -->
+  <div class="page">
+    <div class="section-number">05</div>
+    <div class="section-title">Tipografía</div>
+    <div class="section-subtitle">Typography</div>
+    <div class="section-divider"></div>
+
+    <p class="lead">
+      La tipografía de AltusPoint combina modernidad y legibilidad. Utilizamos dos familias tipográficas
+      que trabajan en armonía para crear una jerarquía visual clara.
+    </p>
+
+    <div class="grid-2" style="margin-top: 40px;">
+      <div>
+        <h3>Tipografía Principal</h3>
+        <div class="type-specimen">
+          <div class="specimen-label">Inter — Sans-serif</div>
+          <div class="specimen-text" style="font-size: 48px; font-weight: 800; line-height: 1.1;">Aa</div>
+          <div class="specimen-text" style="font-size: 14px; margin-top: 16px; line-height: 2;">
+            <span style="font-weight: 300;">Light 300 — </span>
+            <span style="font-weight: 400;">Regular 400 — </span>
+            <span style="font-weight: 500;">Medium 500</span><br>
+            <span style="font-weight: 600;">Semibold 600 — </span>
+            <span style="font-weight: 700;">Bold 700 — </span>
+            <span style="font-weight: 800;">Extrabold 800</span>
+          </div>
+          <div class="specimen-text" style="font-size: 13px; margin-top: 16px; color: var(--gray-500);">
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+            abcdefghijklmnopqrstuvwxyz<br>
+            0123456789 !@#$%&*()
+          </div>
+        </div>
+        <p style="font-size: 13px; color: var(--gray-500);">
+          Uso: Cuerpo de texto, subtítulos, botones, navegación, UI general.
+          Disponible gratuitamente en Google Fonts.
+        </p>
+      </div>
+      <div>
+        <h3>Tipografía Secundaria</h3>
+        <div class="type-specimen">
+          <div class="specimen-label">Playfair Display — Serif</div>
+          <div class="specimen-text" style="font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; line-height: 1.1;">Aa</div>
+          <div class="specimen-text" style="font-family: 'Playfair Display', serif; font-size: 14px; margin-top: 16px; line-height: 2;">
+            <span style="font-weight: 400;">Regular 400 — </span>
+            <span style="font-weight: 500;">Medium 500</span><br>
+            <span style="font-weight: 600;">Semibold 600 — </span>
+            <span style="font-weight: 700;">Bold 700</span>
+          </div>
+          <div class="specimen-text" style="font-family: 'Playfair Display', serif; font-size: 13px; margin-top: 16px; color: var(--gray-500);">
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+            abcdefghijklmnopqrstuvwxyz<br>
+            0123456789 !@#$%&*()
+          </div>
+        </div>
+        <p style="font-size: 13px; color: var(--gray-500);">
+          Uso: Títulos principales, citas destacadas, headlines de impacto.
+          Aporta elegancia y autoridad. Disponible en Google Fonts.
+        </p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 50px;">Jerarquía Tipográfica</h3>
+
+    <div class="card" style="margin-top: 16px;">
+      <div style="padding: 16px 0; border-bottom: 1px solid var(--gray-200);">
+        <span style="font-size: 11px; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">H1 — Título Principal</span>
+        <div style="font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 700; color: var(--navy); margin-top: 8px;">Distribuidora Médica</div>
+        <span style="font-size: 11px; color: var(--gray-500);">Playfair Display Bold — 42px / 1.2</span>
+      </div>
+      <div style="padding: 16px 0; border-bottom: 1px solid var(--gray-200);">
+        <span style="font-size: 11px; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">H2 — Título Sección</span>
+        <div style="font-size: 28px; font-weight: 700; color: var(--navy); margin-top: 8px;">Nuestros Productos</div>
+        <span style="font-size: 11px; color: var(--gray-500);">Inter Bold — 28px / 1.3</span>
+      </div>
+      <div style="padding: 16px 0; border-bottom: 1px solid var(--gray-200);">
+        <span style="font-size: 11px; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">H3 — Subtítulo</span>
+        <div style="font-size: 20px; font-weight: 600; color: var(--navy); margin-top: 8px;">Medias de Compresión</div>
+        <span style="font-size: 11px; color: var(--gray-500);">Inter Semibold — 20px / 1.4</span>
+      </div>
+      <div style="padding: 16px 0; border-bottom: 1px solid var(--gray-200);">
+        <span style="font-size: 11px; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">Cuerpo</span>
+        <div style="font-size: 15px; font-weight: 400; color: var(--gray-700); margin-top: 8px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce hendrerit magna.</div>
+        <span style="font-size: 11px; color: var(--gray-500);">Inter Regular — 15px / 1.8</span>
+      </div>
+      <div style="padding: 16px 0;">
+        <span style="font-size: 11px; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">Label / Caption</span>
+        <div style="font-size: 12px; font-weight: 500; color: var(--gray-500); margin-top: 8px; text-transform: uppercase; letter-spacing: 2px;">Categoría de Producto</div>
+        <span style="font-size: 11px; color: var(--gray-500);">Inter Medium — 12px / uppercase / tracking 2px</span>
+      </div>
+    </div>
+
+    <div class="page-number">08</div>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- 06. VOZ Y TONO -->
+  <!-- =========================================== -->
+  <div class="page">
+    <div class="section-number">06</div>
+    <div class="section-title">Voz y Tono</div>
+    <div class="section-subtitle">Voice & Tone</div>
+    <div class="section-divider"></div>
+
+    <p class="lead">
+      AltusPoint habla como un colega experto y cercano. Utilizamos un tono "de tú a tú" que combina
+      autoridad técnica con calidez humana. Somos sabios pero accesibles, técnicos pero comprensibles.
+    </p>
+
+    <div class="highlight-text">
+      "Hablamos como un amigo médico que te explica todo con claridad, no como un manual técnico frío."
+    </div>
+
+    <h3 style="margin-top: 40px;">Atributos de Voz</h3>
+
+    <div style="margin-top: 20px;">
+      <div class="tone-meter">
+        <div class="meter-label">Informal</div>
+        <div class="meter-bar"><div class="meter-fill" style="width: 65%;"></div></div>
+        <div class="meter-label-right">Formal</div>
+      </div>
+      <div class="tone-meter">
+        <div class="meter-label">Emocional</div>
+        <div class="meter-bar"><div class="meter-fill" style="width: 45%;"></div></div>
+        <div class="meter-label-right">Racional</div>
+      </div>
+      <div class="tone-meter">
+        <div class="meter-label">Sencillo</div>
+        <div class="meter-bar"><div class="meter-fill" style="width: 40%;"></div></div>
+        <div class="meter-label-right">Técnico</div>
+      </div>
+      <div class="tone-meter">
+        <div class="meter-label">Cercano</div>
+        <div class="meter-bar"><div class="meter-fill" style="width: 30%;"></div></div>
+        <div class="meter-label-right">Distante</div>
+      </div>
+      <div class="tone-meter">
+        <div class="meter-label">Inspirador</div>
+        <div class="meter-bar"><div class="meter-fill" style="width: 55%;"></div></div>
+        <div class="meter-label-right">Informativo</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 50px;">Ejemplos de Tono</h3>
+
+    <div class="grid-2" style="margin-top: 20px;">
+      <div class="do-box">
+        <div class="label">Así hablamos</div>
+        <p>"¿Sabías que las medias antiembólicas pueden reducir hasta en un 60% el riesgo de trombosis postoperatoria? Te explicamos cómo elegir la talla correcta."</p>
+        <p>"Estamos aquí para ayudarte a encontrar exactamente lo que necesitas para tu clínica."</p>
+        <p>"Más de 30 años nos respaldan. Confía en quienes conocen cada producto de cerca."</p>
+      </div>
+      <div class="dont-box">
+        <div class="label">Así NO hablamos</div>
+        <p>"Nuestros productos de compresión graduada están diseñados conforme a la norma ISO 12345 para la profilaxis tromboembólica venosa..."</p>
+        <p>"Estimado cliente, le informamos que tenemos disponibilidad de stock."</p>
+        <p>"COMPRA AHORA!!! OFERTA LIMITADA!!! NO TE LO PIERDAS!!!"</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 50px;">Adaptación por Canal</h3>
+
+    <div class="grid-3" style="margin-top: 16px;">
+      <div class="card">
+        <h4 style="font-size: 14px;">Redes Sociales</h4>
+        <p style="font-size: 13px;">
+          Cercano, educativo, con preguntas. Usar emojis con moderación (máx. 2-3 por post).
+          Incluir datos interesantes y tips prácticos.
+        </p>
+      </div>
+      <div class="card">
+        <h4 style="font-size: 14px;">Sitio Web</h4>
+        <p style="font-size: 13px;">
+          Profesional pero amigable. Descripciones claras de productos.
+          Balancear información técnica con beneficios prácticos.
+        </p>
+      </div>
+      <div class="card">
+        <h4 style="font-size: 14px;">WhatsApp / Atención</h4>
+        <p style="font-size: 13px;">
+          Personal y directo. Resolver dudas con rapidez.
+          Tratar por nombre cuando sea posible. Cercanía máxima.
+        </p>
+      </div>
+    </div>
+
+    <div class="page-number">09</div>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- 07. AUDIENCIAS -->
+  <!-- =========================================== -->
+  <div class="page">
+    <div class="section-number">07</div>
+    <div class="section-title">Audiencias</div>
+    <div class="section-subtitle">Target Audiences</div>
+    <div class="section-divider"></div>
+
+    <p class="lead">
+      AltusPoint se dirige a cuatro segmentos principales. Cada uno tiene necesidades, motivaciones
+      y puntos de dolor distintos. La comunicación debe adaptarse a cada audiencia sin perder la
+      esencia de la marca.
+    </p>
+
+    <div class="grid-2" style="margin-top: 30px;">
+      <div class="audience-card">
+        <div class="audience-header" style="background: var(--navy);">
+          <h4 style="color: white; margin: 0; font-size: 16px;">🏥 Clínicas y Hospitales</h4>
+        </div>
+        <div class="audience-body">
+          <p style="font-size: 13px; color: var(--gray-500); margin-bottom: 12px;">Decisores: Administradores, Gerentes de Compras</p>
+          <ul>
+            <li>Buscan optimizar costos sin sacrificar calidad</li>
+            <li>Necesitan proveedores confiables y puntuales</li>
+            <li>Valoran la asesoría técnica y el acompañamiento</li>
+            <li>Toman decisiones basadas en datos financieros</li>
+          </ul>
+          <div style="margin-top: 16px; padding: 12px; background: var(--light-blue); border-radius: 8px;">
+            <p style="font-size: 12px; font-weight: 600; color: var(--navy); margin: 0;">Mensaje clave:</p>
+            <p style="font-size: 12px; color: var(--navy); margin: 4px 0 0 0;">"Optimiza tu inversión con productos de calidad certificada y entregas garantizadas."</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="audience-card">
+        <div class="audience-header" style="background: var(--blue);">
+          <h4 style="color: white; margin: 0; font-size: 16px;">👨‍⚕️ Médicos y Especialistas</h4>
+        </div>
+        <div class="audience-body">
+          <p style="font-size: 13px; color: var(--gray-500); margin-bottom: 12px;">Cirujanos, traumatólogos, internistas, dermatólogos</p>
+          <ul>
+            <li>Priorizan su reputación profesional</li>
+            <li>Buscan productos que mejoren resultados clínicos</li>
+            <li>Interesados en referir productos a sus pacientes</li>
+            <li>Valoran la evidencia científica y la innovación</li>
+          </ul>
+          <div style="margin-top: 16px; padding: 12px; background: var(--light-blue); border-radius: 8px;">
+            <p style="font-size: 12px; font-weight: 600; color: var(--navy); margin: 0;">Mensaje clave:</p>
+            <p style="font-size: 12px; color: var(--navy); margin: 4px 0 0 0;">"Productos respaldados por ciencia que elevan tus resultados y la satisfacción de tus pacientes."</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="audience-card">
+        <div class="audience-header" style="background: #5BB5A2;">
+          <h4 style="color: white; margin: 0; font-size: 16px;">🤝 Distribuidores</h4>
+        </div>
+        <div class="audience-body">
+          <p style="font-size: 13px; color: var(--gray-500); margin-bottom: 12px;">Distribuidores regionales y locales</p>
+          <ul>
+            <li>Buscan productos de calidad a precios competitivos</li>
+            <li>Necesitan catálogos actualizados y material de apoyo</li>
+            <li>Valoran la relación comercial a largo plazo</li>
+            <li>Quieren diferenciarse de la competencia</li>
+          </ul>
+          <div style="margin-top: 16px; padding: 12px; background: #E6F7F3; border-radius: 8px;">
+            <p style="font-size: 12px; font-weight: 600; color: #2D7A68; margin: 0;">Mensaje clave:</p>
+            <p style="font-size: 12px; color: #2D7A68; margin: 4px 0 0 0;">"Aliados comerciales con productos exclusivos que impulsan tu negocio."</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="audience-card">
+        <div class="audience-header" style="background: #7AB648;">
+          <h4 style="color: white; margin: 0; font-size: 16px;">🧑 Pacientes</h4>
+        </div>
+        <div class="audience-body">
+          <p style="font-size: 13px; color: var(--gray-500); margin-bottom: 12px;">Usuarios finales referidos por médicos</p>
+          <ul>
+            <li>Confían en la recomendación de su médico</li>
+            <li>Buscan información clara y comprensible</li>
+            <li>Necesitan saber cómo usar correctamente el producto</li>
+            <li>Valoran la atención personalizada y empática</li>
+          </ul>
+          <div style="margin-top: 16px; padding: 12px; background: #F0F7E6; border-radius: 8px;">
+            <p style="font-size: 12px; font-weight: 600; color: #4A8C2A; margin: 0;">Mensaje clave:</p>
+            <p style="font-size: 12px; color: #4A8C2A; margin: 4px 0 0 0;">"Tu bienestar es nuestra prioridad. Te acompañamos en cada paso de tu recuperación."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-number">10</div>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- 08. LÍNEAS DE PRODUCTO -->
+  <!-- =========================================== -->
+  <div class="page">
+    <div class="section-number">08</div>
+    <div class="section-title">Líneas de Producto</div>
+    <div class="section-subtitle">Product Lines</div>
+    <div class="section-divider"></div>
+
+    <p class="lead">
+      AltusPoint organiza su catálogo en nueve líneas de producto. Cada línea tiene un color asociado
+      que crea una codificación visual intuitiva, desde los verdes de salud hasta los azules de confianza,
+      incluyendo el rosa de la línea materna.
+    </p>
+
+    <div style="margin-top: 30px;">
+      <div class="product-line" style="background: #E6F0D9;">
+        <div class="line-dot" style="background: #7AB648;"></div>
+        <div class="line-name">Equipos Médicos</div>
+        <div class="line-desc">Monitores, desfibriladores, equipos de diagnóstico</div>
+      </div>
+      <div class="product-line" style="background: #D9EFD6;">
+        <div class="line-dot" style="background: #8BC66A;"></div>
+        <div class="line-name">Material Médico Quirúrgico</div>
+        <div class="line-desc">Guantes, batas, empaquetado quirúrgico</div>
+      </div>
+      <div class="product-line" style="background: #D4EDE4;">
+        <div class="line-dot" style="background: #5BB5A2;"></div>
+        <div class="line-name">Medias de Compresión</div>
+        <div class="line-desc">Compresión graduada: baja, media, alta, deportiva, antiembólica</div>
+      </div>
+      <div class="product-line" style="background: #D6E8ED;">
+        <div class="line-dot" style="background: #5BA8BF;"></div>
+        <div class="line-name">Cirugía Plástica y Post-quirúrgico</div>
+        <div class="line-desc">Fajas, prendas de compresión post-operatoria</div>
+      </div>
+      <div class="product-line" style="background: #D8E4F0;">
+        <div class="line-dot" style="background: #6B8EC2;"></div>
+        <div class="line-name">Órtesis y Rehabilitación</div>
+        <div class="line-desc">Productos de rehabilitación y soporte ortopédico</div>
+      </div>
+      <div class="product-line" style="background: #DDE2F0;">
+        <div class="line-dot" style="background: #5A6FAF;"></div>
+        <div class="line-name">Desinfección y Limpieza</div>
+        <div class="line-desc">Soluciones antisépticas, limpieza hospitalaria</div>
+      </div>
+      <div class="product-line" style="background: #D8DAE8;">
+        <div class="line-dot" style="background: #3D4F8F;"></div>
+        <div class="line-name">Gases Medicinales</div>
+        <div class="line-desc">Sistemas de gases para uso hospitalario</div>
+      </div>
+      <div class="product-line" style="background: #D4D7E5;">
+        <div class="line-dot" style="background: #0B1D4F;"></div>
+        <div class="line-name">Cuidado de Heridas</div>
+        <div class="line-desc">Apósitos, vendajes, material de curación</div>
+      </div>
+      <div class="product-line" style="background: #F8E4EF;">
+        <div class="line-dot" style="background: #E8A0BF;"></div>
+        <div class="line-name">Línea Materna</div>
+        <div class="line-desc">Fajas gestacionales, medias prenatales, cuidado del embarazo</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 40px; text-align: center;">
+      <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: var(--blue); font-weight: 600; margin-bottom: 12px;">
+        Codificación Visual
+      </p>
+      <div style="display: flex; height: 30px; border-radius: 8px; overflow: hidden; max-width: 600px; margin: 0 auto;">
+        <div style="flex: 1; background: #7AB648;"></div>
+        <div style="flex: 1; background: #8BC66A;"></div>
+        <div style="flex: 1; background: #5BB5A2;"></div>
+        <div style="flex: 1; background: #5BA8BF;"></div>
+        <div style="flex: 1; background: #6B8EC2;"></div>
+        <div style="flex: 1; background: #5A6FAF;"></div>
+        <div style="flex: 1; background: #3D4F8F;"></div>
+        <div style="flex: 1; background: #0B1D4F;"></div>
+        <div style="flex: 1; background: #E8A0BF;"></div>
+      </div>
+      <p style="font-size: 12px; color: var(--gray-500); margin-top: 8px;">
+        Verde (Salud) → Azul (Confianza) → Navy (Autoridad) → Rosa (Maternidad)
+      </p>
+    </div>
+
+    <div class="page-number">11</div>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- 09. APLICACIONES DIGITALES -->
+  <!-- =========================================== -->
+  <div class="page">
+    <div class="section-number">09</div>
+    <div class="section-title">Aplicaciones Digitales</div>
+    <div class="section-subtitle">Digital Applications</div>
+    <div class="section-divider"></div>
+
+    <p class="lead">
+      La presencia digital de AltusPoint debe mantener consistencia visual en todos los puntos de contacto.
+      Aquí se definen las directrices para redes sociales, web y material digital.
+    </p>
+
+    <h3 style="margin-top: 40px;">Redes Sociales — Formatos de Contenido</h3>
+
+    <div class="grid-3" style="margin-top: 20px;">
+      <div class="social-template">
+        <div class="template-header">Post Educativo</div>
+        <div class="template-body" style="background: var(--navy); min-height: 180px;">
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--blue); margin-bottom: 12px;">¿Sabías que...?</div>
+          <div style="font-family: 'Playfair Display', serif; font-size: 18px; color: white; margin-bottom: 16px;">Dato interesante sobre salud o producto</div>
+          <div style="display: flex; align-items: baseline; gap: 0;">
+            <span style="border: 2px solid white; padding: 2px 6px; font-size: 12px; font-weight: 800; color: white;">ALTUS</span>
+            <span style="font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.7);">POINT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-template">
+        <div class="template-header">Post de Producto</div>
+        <div class="template-body" style="background: var(--light-blue); min-height: 180px;">
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--blue); margin-bottom: 12px;">Nuevo Producto</div>
+          <div style="width: 60px; height: 60px; background: white; border-radius: 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; color: var(--gray-300); font-size: 24px;">📦</div>
+          <div style="font-size: 14px; font-weight: 700; color: var(--navy);">Nombre del Producto</div>
+          <div style="font-size: 11px; color: var(--blue);">Descripción breve</div>
+        </div>
+      </div>
+
+      <div class="social-template">
+        <div class="template-header">Post Promocional</div>
+        <div class="template-body" style="background: linear-gradient(135deg, #7AB648, #5BB5A2); min-height: 180px;">
+          <div style="font-size: 36px; font-weight: 800; color: white; line-height: 1;">-20%</div>
+          <div style="font-size: 14px; color: rgba(255,255,255,0.9); margin-top: 8px;">en toda la línea</div>
+          <div style="font-size: 12px; font-weight: 700; color: white; margin-top: 12px; padding: 6px 16px; border: 2px solid white; border-radius: 20px;">Comprar Ahora</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 50px;">Presencia Digital</h3>
+
+    <div class="grid-2" style="margin-top: 16px;">
+      <div class="card">
+        <h4 style="font-size: 14px;">Instagram / Facebook</h4>
+        <p style="font-size: 13px; margin-bottom: 0;">
+          <strong>Bio:</strong> "Distribuidora de Material y Equipos Médicos 🏥 +30 años de experiencia 🔒 Calidad certificada 📱 WhatsApp: +58 414-711-4583"
+        </p>
+        <div style="margin-top: 12px;">
+          <span style="font-size: 11px; color: var(--blue); font-weight: 600;">Pilares de contenido:</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px;">
+            <span style="font-size: 11px; padding: 4px 10px; background: var(--light-blue); color: var(--navy); border-radius: 20px;">Educativo 40%</span>
+            <span style="font-size: 11px; padding: 4px 10px; background: var(--light-blue); color: var(--navy); border-radius: 20px;">Producto 25%</span>
+            <span style="font-size: 11px; padding: 4px 10px; background: var(--light-blue); color: var(--navy); border-radius: 20px;">Testimonios 20%</span>
+            <span style="font-size: 11px; padding: 4px 10px; background: var(--light-blue); color: var(--navy); border-radius: 20px;">Promocional 15%</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h4 style="font-size: 14px;">LinkedIn</h4>
+        <p style="font-size: 13px; margin-bottom: 0;">
+          <strong>Enfoque:</strong> Contenido más técnico y profesional. Artículos sobre innovación en insumos médicos, estudios de caso, y logros de la empresa.
+        </p>
+        <div style="margin-top: 12px;">
+          <span style="font-size: 11px; color: var(--blue); font-weight: 600;">Pilares de contenido:</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px;">
+            <span style="font-size: 11px; padding: 4px 10px; background: var(--light-blue); color: var(--navy); border-radius: 20px;">Thought Leadership 40%</span>
+            <span style="font-size: 11px; padding: 4px 10px; background: var(--light-blue); color: var(--navy); border-radius: 20px;">Casos de Éxito 30%</span>
+            <span style="font-size: 11px; padding: 4px 10px; background: var(--light-blue); color: var(--navy); border-radius: 20px;">Empresa 30%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 40px;">Hashtags Principales</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;">
+      <span style="font-size: 12px; padding: 6px 14px; background: var(--navy); color: white; border-radius: 20px;">#AltusPoint</span>
+      <span style="font-size: 12px; padding: 6px 14px; background: var(--navy); color: white; border-radius: 20px;">#MaterialMédico</span>
+      <span style="font-size: 12px; padding: 6px 14px; background: var(--blue); color: white; border-radius: 20px;">#SaludSegura</span>
+      <span style="font-size: 12px; padding: 6px 14px; background: var(--blue); color: white; border-radius: 20px;">#EquiposMédicos</span>
+      <span style="font-size: 12px; padding: 6px 14px; background: #5BB5A2; color: white; border-radius: 20px;">#InsumosMédicos</span>
+      <span style="font-size: 12px; padding: 6px 14px; background: #7AB648; color: white; border-radius: 20px;">#SaludVenezuela</span>
+    </div>
+
+    <div class="page-number">12</div>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- 10. USOS CORRECTOS E INCORRECTOS -->
+  <!-- =========================================== -->
+  <div class="page">
+    <div class="section-number">10</div>
+    <div class="section-title">Usos Correctos e Incorrectos</div>
+    <div class="section-subtitle">Do's & Don'ts</div>
+    <div class="section-divider"></div>
+
+    <p class="lead">
+      Para mantener la integridad de la marca, es fundamental respetar estas reglas de uso.
+      El logo y los elementos de marca deben usarse de manera consistente.
+    </p>
+
+    <h3 style="margin-top: 40px;">Logo</h3>
+
+    <div class="do-dont-grid" style="margin-top: 20px;">
+      <div class="do-box">
+        <div class="label">Correcto</div>
+        <p>Usar el logo con los colores oficiales (navy + azul)</p>
+        <p>Mantener la proporción original sin distorsiones</p>
+        <p>Usar sobre fondos limpios con suficiente contraste</p>
+        <p>Respetar la zona de protección mínima</p>
+        <p>Usar la versión negativa (blanca) sobre fondos oscuros</p>
+        <p>Mantener el recuadro abierto a la derecha con la transición de color</p>
+      </div>
+      <div class="dont-box">
+        <div class="label">Incorrecto</div>
+        <p>Cambiar los colores del logo por colores no aprobados</p>
+        <p>Estirar, comprimir o rotar el logo</p>
+        <p>Colocar el logo sobre fondos con patrones o imágenes complejas</p>
+        <p>Agregar sombras, efectos 3D o bordes al logo</p>
+        <p>Cerrar el recuadro del logo (las líneas deben permanecer abiertas a la derecha)</p>
+        <p>Separar los elementos del logo (recuadro de las letras)</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 40px;">Colores</h3>
+
+    <div class="do-dont-grid">
+      <div class="do-box">
+        <div class="label">Correcto</div>
+        <p>Usar los colores exactos de la paleta oficial (verificar hexadecimales)</p>
+        <p>Texto navy sobre fondos claros para máxima legibilidad</p>
+        <p>Degradados suaves entre colores de la paleta</p>
+        <p>Predominancia del navy como color principal</p>
+      </div>
+      <div class="dont-box">
+        <div class="label">Incorrecto</div>
+        <p>Usar azules o verdes fuera de la paleta aprobada</p>
+        <p>Texto claro sobre fondos claros (bajo contraste)</p>
+        <p>Mezclar más de 3 colores en una sola composición</p>
+        <p>Usar colores neón, rojos o naranjas como principales</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 40px;">Tono y Comunicación</h3>
+
+    <div class="do-dont-grid">
+      <div class="do-box">
+        <div class="label">Correcto</div>
+        <p>Hablar de "tú a tú" con cercanía profesional</p>
+        <p>Educar e informar antes de vender</p>
+        <p>Incluir datos verificables y evidencia</p>
+        <p>Usar lenguaje inclusivo y accesible</p>
+      </div>
+      <div class="dont-box">
+        <div class="label">Incorrecto</div>
+        <p>Usar lenguaje agresivo de ventas o FOMO excesivo</p>
+        <p>Hacer afirmaciones médicas no verificadas</p>
+        <p>Usar jerga excesivamente técnica sin explicación</p>
+        <p>Comunicar de forma fría, distante o corporativa</p>
+      </div>
+    </div>
+
+    <div class="page-number">13</div>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- BACK COVER -->
+  <!-- =========================================== -->
+  <div class="cover" style="justify-content: center;">
+    <div class="cover-logo" style="margin-bottom: 40px;">
+      <img src="images/logo.png" alt="AltusPoint" style="max-width: 400px; width: 100%; height: auto; filter: brightness(0) invert(1);">
+    </div>
+    <div class="divider"></div>
+    <p style="font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 30px; line-height: 2;">
+      Distribuidora de Material y Equipos Médicos<br>
+      Caracas, Venezuela<br>
+      RIF: J-501636583
+    </p>
+    <p style="font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 20px;">
+      +58 414-711-4583 &nbsp;|&nbsp; info@altuspoint.com
+    </p>
+    <div class="divider" style="margin-top: 60px;"></div>
+    <p style="font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 3px; text-transform: uppercase;">
+      Documento Confidencial — 2025
+    </p>
+    <p style="font-size: 11px; color: rgba(255,255,255,0.2); margin-top: 8px;">
+      Nuestro compromiso es con la seguridad
+    </p>
+  </div>
+
+</body>
+</html>

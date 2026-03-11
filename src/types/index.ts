@@ -97,3 +97,25 @@ export interface StoreSetting {
   key: string;
   value: string;
 }
+
+export interface BlogPost {
+  id: string;
+  title_es: string;
+  title_en: string;
+  slug: string;
+  excerpt_es: string;
+  excerpt_en: string;
+  content_es: string;
+  content_en: string;
+  featured_image: string;
+  tags: string[];
+  published: boolean;
+  published_at: string | null;
+  author_name: string;
+  meta_title_es: string;
+  meta_title_en: string;
+  meta_description_es: string;
+  meta_description_en: string;
+  created_at: string;
+  updated_at: string;
+}
