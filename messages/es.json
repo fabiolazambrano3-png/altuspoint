@@ -91,7 +91,12 @@
     "consult_price": "Precio a consultar",
     "consult_description": "Este producto requiere cotización personalizada. Contáctanos por WhatsApp para obtener precio y disponibilidad.",
     "consult_whatsapp": "Consultar por WhatsApp",
-    "ask_whatsapp": "¿Tienes dudas? Escríbenos por WhatsApp"
+    "ask_whatsapp": "¿Tienes dudas? Escríbenos por WhatsApp",
+    "loading": "Cargando...",
+    "filters": "Filtros",
+    "product_line": "Línea de Producto",
+    "clear": "Limpiar",
+    "view_products": "Ver {count} productos"
   },
   "cart": {
     "title": "Tu carrito",

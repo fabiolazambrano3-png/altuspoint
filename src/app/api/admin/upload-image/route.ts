@@ -1,6 +1,16 @@
 import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
 
+// Sanitize a string to be safe as a Supabase storage key (ASCII only)
+function sanitizeKey(str: string): string {
+  return str
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // Remove diacritics (ñ→n, á→a, etc.)
+    .replace(/[^a-z0-9]+/g, '-')     // Replace non-alphanumeric with hyphens
+    .replace(/^-+|-+$/g, '');         // Trim leading/trailing hyphens
+}
+
 export async function POST(request: Request) {
   try {
     const supabase = await createClient();
@@ -18,7 +28,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Only JPG, PNG and WebP images are allowed' }, { status: 400 });
     }
 
-    const fileName = `${productSlug || 'product'}-${Date.now()}.${fileExt}`;
+    const safeSlug = sanitizeKey(productSlug || 'product');
+    const fileName = `${safeSlug}-${Date.now()}.${fileExt}`;
 
     const { error: uploadError } = await supabase.storage
       .from('product-images')

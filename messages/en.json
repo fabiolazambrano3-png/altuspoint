@@ -91,7 +91,12 @@
     "consult_price": "Price on request",
     "consult_description": "This product requires a custom quote. Contact us via WhatsApp for pricing and availability.",
     "consult_whatsapp": "Inquire via WhatsApp",
-    "ask_whatsapp": "Have questions? Message us on WhatsApp"
+    "ask_whatsapp": "Have questions? Message us on WhatsApp",
+    "loading": "Loading...",
+    "filters": "Filters",
+    "product_line": "Product Line",
+    "clear": "Clear",
+    "view_products": "View {count} products"
   },
   "cart": {
     "title": "Your cart",
