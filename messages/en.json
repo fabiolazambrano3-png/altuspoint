@@ -64,7 +64,18 @@
     "value_trust": "Trust",
     "value_innovation": "Innovation",
     "cta_title": "Ready to elevate healthcare?",
-    "cta_subtitle": "Contact us today and discover how we can be your partner in medical equipment and supplies distribution."
+    "cta_subtitle": "Contact us today and discover how we can be your partner in medical equipment and supplies distribution.",
+    "distributor_label": "Opportunity",
+    "distributor_title": "Grow with us: Join the AltusPoint network",
+    "distributor_text": "We're looking for strategic partners who share our vision of bringing top-quality medical products across Venezuela. If your company has a vocation for healthcare service, we want to meet you.",
+    "distributor_cta": "Become a distributor",
+    "distributor_cta_secondary": "Learn requirements",
+    "distributor_benefit_1": "Exclusive brands",
+    "distributor_benefit_1_desc": "Access to top-tier international brands with exclusive distribution in your area.",
+    "distributor_benefit_2": "Ongoing support",
+    "distributor_benefit_2_desc": "Training, marketing materials, and ongoing technical guidance for your team.",
+    "distributor_benefit_3": "Shared growth",
+    "distributor_benefit_3_desc": "A solid business model with over 30 years of experience backing your operation."
   },
   "products": {
     "title": "Product catalog",
@@ -171,7 +182,10 @@
     "message": "Message",
     "send": "Send message",
     "sent": "Message sent! We'll get back to you soon.",
-    "whatsapp_cta": "Message us on WhatsApp"
+    "whatsapp_cta": "Message us on WhatsApp",
+    "distributor_banner_title": "Want to become an AltusPoint distributor?",
+    "distributor_banner_text": "If your company is in the healthcare sector and you want to join our distributor network, get in touch.",
+    "distributor_banner_cta": "Become a distributor"
   },
   "blog": {
     "label": "Blog",
@@ -210,6 +224,7 @@
     "rights": "All rights reserved.",
     "company": "Medical equipment & supplies distributor. Over 30 years of experience serving healthcare professionals in Venezuela.",
     "quick_links": "Quick links",
+    "become_distributor": "Become a distributor",
     "contact_info": "Contact info",
     "follow_us": "Follow us",
     "slogan": "Our commitment is to safety"

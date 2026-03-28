@@ -64,7 +64,18 @@
     "value_trust": "Confianza",
     "value_innovation": "Innovación",
     "cta_title": "¿Listo para elevar la atención médica?",
-    "cta_subtitle": "Contáctanos hoy y descubre cómo podemos ser tu aliado en la distribución de material y equipos médicos."
+    "cta_subtitle": "Contáctanos hoy y descubre cómo podemos ser tu aliado en la distribución de material y equipos médicos.",
+    "distributor_label": "Oportunidad",
+    "distributor_title": "Crece con nosotros: Sé parte de la red AltusPoint",
+    "distributor_text": "Buscamos aliados estratégicos que compartan nuestra visión de llevar productos médicos de la más alta calidad a toda Venezuela. Si tu empresa tiene vocación de servicio en el sector salud, queremos conocerte.",
+    "distributor_cta": "Quiero ser distribuidor",
+    "distributor_cta_secondary": "Conocer requisitos",
+    "distributor_benefit_1": "Marcas exclusivas",
+    "distributor_benefit_1_desc": "Acceso a marcas internacionales de primer nivel con distribución exclusiva en tu zona.",
+    "distributor_benefit_2": "Soporte continuo",
+    "distributor_benefit_2_desc": "Capacitación, material de apoyo y asesoría técnica permanente para tu equipo.",
+    "distributor_benefit_3": "Crecimiento conjunto",
+    "distributor_benefit_3_desc": "Un modelo de negocio sólido con más de 30 años de experiencia respaldando tu operación."
   },
   "products": {
     "title": "Catálogo de productos",
@@ -171,7 +182,10 @@
     "message": "Mensaje",
     "send": "Enviar mensaje",
     "sent": "¡Mensaje enviado! Te responderemos pronto.",
-    "whatsapp_cta": "Escríbenos por WhatsApp"
+    "whatsapp_cta": "Escríbenos por WhatsApp",
+    "distributor_banner_title": "¿Quieres ser distribuidor AltusPoint?",
+    "distributor_banner_text": "Si tu empresa está en el sector salud y quieres formar parte de nuestra red de distribuidores, contáctanos.",
+    "distributor_banner_cta": "Quiero ser distribuidor"
   },
   "blog": {
     "label": "Blog",
@@ -210,6 +224,7 @@
     "rights": "Todos los derechos reservados.",
     "company": "Distribuidora de material y equipos médicos. Más de 30 años de experiencia al servicio de los profesionales de la salud en Venezuela.",
     "quick_links": "Enlaces rápidos",
+    "become_distributor": "Sé distribuidor",
     "contact_info": "Contacto",
     "follow_us": "Síguenos",
     "slogan": "Nuestro compromiso es con la seguridad"

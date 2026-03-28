@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import { BRAND } from '@/lib/constants';
-import { Mail, Phone, MapPin, MessageCircle, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, CheckCircle, Handshake, ArrowRight } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 export default function ContactPage() {
@@ -129,6 +129,31 @@ export default function ContactPage() {
           >
             <MessageCircle className="w-5 h-5" />
             {t('whatsapp_cta')}
+          </a>
+        </div>
+      </div>
+
+      {/* Distributor Banner */}
+      <div className="mt-16 relative overflow-hidden rounded-2xl bg-gradient-to-r from-navy via-[#122a6b] to-blue p-8 sm:p-10">
+        <div className="absolute inset-0 opacity-[0.04]">
+          <div className="absolute top-0 left-0 w-full h-full" style={{backgroundImage: 'radial-gradient(circle at 80% 50%, white 1px, transparent 1px)', backgroundSize: '40px 40px'}} />
+        </div>
+        <div className="relative flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
+          <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center shrink-0">
+            <Handshake className="w-7 h-7 text-white" />
+          </div>
+          <div className="flex-1 text-center sm:text-left">
+            <h3 className="text-xl font-bold text-white mb-1">{t('distributor_banner_title')}</h3>
+            <p className="text-white/60 text-sm">{t('distributor_banner_text')}</p>
+          </div>
+          <a
+            href={`https://wa.me/${BRAND.whatsapp.replace('+', '')}?text=${encodeURIComponent('Hola, estoy interesado en ser distribuidor AltusPoint. Me gustaría recibir más información.')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-green-primary hover:bg-green-dark text-white font-semibold rounded-lg shadow-lg shadow-green-primary/20 transition-all duration-200 shrink-0"
+          >
+            {t('distributor_banner_cta')}
+            <ArrowRight className="w-4 h-4" />
           </a>
         </div>
       </div>

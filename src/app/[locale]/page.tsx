@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { Shield, Truck, Headphones, Award, Clock, Heart, Monitor, Scissors, Footprints, Sparkles, Bone, SprayCan, Wind, Bandage, Baby, type LucideIcon } from 'lucide-react';
+import { Shield, Truck, Headphones, Award, Clock, Heart, Monitor, Scissors, Footprints, Sparkles, Bone, SprayCan, Wind, Bandage, Baby, Handshake, Star, Users, ArrowRight, type LucideIcon } from 'lucide-react';
 import { BRAND } from '@/lib/constants';
 
 // 8 Product lines from brandbook with their gradient colors
@@ -213,6 +213,71 @@ export default function HomePage() {
                 <span className="text-sm font-semibold tracking-wide">{value.label}</span>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Distributor Section */}
+      <section className="py-20 sm:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left - Message */}
+            <div>
+              <p className="text-sm uppercase tracking-[4px] text-blue font-medium mb-3">
+                {t('distributor_label')}
+              </p>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy leading-tight">
+                {t('distributor_title')}
+              </h2>
+              <div className="section-line mt-6 mb-8" />
+              <p className="text-gray-600 leading-relaxed text-lg font-light">
+                {t('distributor_text')}
+              </p>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <a
+                  href={`https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent('Hola, estoy interesado en ser distribuidor AltusPoint. Me gustaría recibir más información.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="inline-flex items-center justify-center gap-2 rounded-lg px-8 py-3 text-base font-semibold bg-green-primary text-white hover:bg-green-dark shadow-lg shadow-green-primary/20 transition-all duration-200">
+                    <Handshake className="w-5 h-5" />
+                    {t('distributor_cta')}
+                  </button>
+                </a>
+                <a
+                  href={`https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent('Hola, me gustaría conocer los requisitos para ser distribuidor AltusPoint.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="inline-flex items-center justify-center gap-2 rounded-lg px-8 py-3 text-base font-medium border-2 border-navy/20 text-navy hover:bg-navy/5 transition-all duration-200">
+                    {t('distributor_cta_secondary')}
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </a>
+              </div>
+            </div>
+
+            {/* Right - Benefits */}
+            <div className="space-y-5">
+              {[
+                { icon: Star, title: t('distributor_benefit_1'), desc: t('distributor_benefit_1_desc'), color: '#7AB648' },
+                { icon: Headphones, title: t('distributor_benefit_2'), desc: t('distributor_benefit_2_desc'), color: '#5BB5A2' },
+                { icon: Users, title: t('distributor_benefit_3'), desc: t('distributor_benefit_3_desc'), color: '#6B8EC2' },
+              ].map((benefit, i) => (
+                <div key={i} className="card-premium flex items-start gap-5 p-6 rounded-2xl border border-gray-100 bg-white">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                    style={{backgroundColor: `${benefit.color}15`}}
+                  >
+                    <benefit.icon className="w-6 h-6" style={{color: benefit.color}} />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-navy mb-1">{benefit.title}</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed">{benefit.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
