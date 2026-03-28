@@ -7,7 +7,7 @@ import Input from '@/components/ui/Input';
 import { formatPrice } from '@/lib/utils';
 import {
   Plus, Edit, Trash2, X, Loader2, Search, Image as ImageIcon,
-  Upload, GripVertical, Palette, Ruler,
+  Upload, GripVertical, Palette, Ruler, FileText, Download,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
@@ -28,6 +28,7 @@ interface Product {
   brand: string;
   sku: string;
   tags: string[];
+  brochure_url: string | null;
   categories?: { name_es: string; name_en: string; slug: string } | null;
 }
 
@@ -67,6 +68,7 @@ const emptyProduct = {
   brand: '',
   sku: '',
   tags: [] as string[],
+  brochure_url: '' as string,
 };
 
 const emptyVariant = {
@@ -95,6 +97,10 @@ export default function AdminProductsPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
 
+  // Brochure upload
+  const brochureInputRef = useRef<HTMLInputElement>(null);
+  const [uploadingBrochure, setUploadingBrochure] = useState(false);
+
   // Variants
   const [variants, setVariants] = useState<Variant[]>([]);
   const [showVariantForm, setShowVariantForm] = useState(false);
@@ -103,7 +109,7 @@ export default function AdminProductsPage() {
   const [savingVariant, setSavingVariant] = useState(false);
 
   // Active tab in modal
-  const [activeTab, setActiveTab] = useState<'general' | 'images' | 'variants'>('general');
+  const [activeTab, setActiveTab] = useState<'general' | 'images' | 'brochure' | 'variants'>('general');
 
   useEffect(() => {
     fetchProducts();
@@ -171,6 +177,7 @@ export default function AdminProductsPage() {
       brand: product.brand || '',
       sku: product.sku || '',
       tags: product.tags || [],
+      brochure_url: product.brochure_url || '',
     });
     setActiveTab('general');
     fetchVariants(product.id);
@@ -196,6 +203,7 @@ export default function AdminProductsPage() {
           price_usd: Number(form.price_usd),
           price_bs: Number(form.price_bs),
           stock: Number(form.stock),
+          brochure_url: form.brochure_url || null,
         }),
       });
 
@@ -282,6 +290,52 @@ export default function AdminProductsPage() {
     const [moved] = newImages.splice(from, 1);
     newImages.splice(to, 0, moved);
     setForm({ ...form, images: newImages });
+  };
+
+  // ─── Brochure handlers ───
+  const handleBrochureUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 20 * 1024 * 1024) {
+      toast.error('El PDF no puede superar 20MB');
+      return;
+    }
+
+    setUploadingBrochure(true);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('productSlug', form.slug || 'product');
+
+      const res = await fetch('/api/admin/upload-brochure', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Upload failed');
+
+      setForm({ ...form, brochure_url: data.url });
+      toast.success('Brochure subido');
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Error al subir brochure';
+      toast.error(message);
+    } finally {
+      setUploadingBrochure(false);
+      if (brochureInputRef.current) brochureInputRef.current.value = '';
+    }
+  };
+
+  const removeBrochure = async () => {
+    if (form.brochure_url) {
+      try {
+        await fetch(`/api/admin/upload-brochure?url=${encodeURIComponent(form.brochure_url)}`, { method: 'DELETE' });
+      } catch {
+        // ignore delete error
+      }
+    }
+    setForm({ ...form, brochure_url: '' });
   };
 
   // ─── Variant handlers ───
@@ -543,7 +597,7 @@ export default function AdminProductsPage() {
 
             {/* Tabs */}
             <div className="flex border-b border-gray-100 px-6">
-              {(['general', 'images', 'variants'] as const).map((tab) => (
+              {(['general', 'images', 'brochure', 'variants'] as const).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
@@ -555,6 +609,7 @@ export default function AdminProductsPage() {
                 >
                   {tab === 'general' && 'General'}
                   {tab === 'images' && `Imágenes (${form.images.length})`}
+                  {tab === 'brochure' && `Brochure ${form.brochure_url ? '✓' : ''}`}
                   {tab === 'variants' && `Variantes (${variants.length})`}
                 </button>
               ))}
@@ -810,6 +865,103 @@ export default function AdminProductsPage() {
                           const input = document.getElementById('manual-url-input') as HTMLInputElement;
                           if (input?.value.trim()) {
                             setForm({ ...form, images: [...form.images, input.value.trim()] });
+                            input.value = '';
+                          }
+                        }}
+                      >
+                        Agregar
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* ─── TAB: BROCHURE ─── */}
+              {activeTab === 'brochure' && (
+                <div className="space-y-4">
+                  <p className="text-sm text-gray-500">
+                    Sube el brochure/ficha técnica del producto en formato PDF (máx. 20MB).
+                    Los clientes podrán descargarlo desde la página del producto.
+                  </p>
+
+                  {form.brochure_url ? (
+                    <div className="flex items-center gap-3 p-4 bg-green-50 rounded-xl border border-green-200">
+                      <FileText className="w-8 h-8 text-green-600 shrink-0" />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-green-800">Brochure cargado</p>
+                        <p className="text-xs text-green-600 truncate">{form.brochure_url}</p>
+                      </div>
+                      <div className="flex items-center gap-2 shrink-0">
+                        <a
+                          href={form.brochure_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 text-green-600 hover:text-green-800 hover:bg-green-100 rounded-lg transition-colors"
+                          title="Ver PDF"
+                        >
+                          <Download className="w-4 h-4" />
+                        </a>
+                        <button
+                          onClick={removeBrochure}
+                          className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                          title="Eliminar brochure"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <input
+                        ref={brochureInputRef}
+                        type="file"
+                        accept="application/pdf"
+                        onChange={handleBrochureUpload}
+                        className="hidden"
+                      />
+                      <button
+                        onClick={() => brochureInputRef.current?.click()}
+                        disabled={uploadingBrochure}
+                        className="w-full border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-navy hover:bg-navy/5 transition-colors"
+                      >
+                        {uploadingBrochure ? (
+                          <Loader2 className="w-8 h-8 animate-spin text-navy mx-auto" />
+                        ) : (
+                          <FileText className="w-8 h-8 text-gray-400 mx-auto" />
+                        )}
+                        <p className="mt-2 text-sm text-gray-500">
+                          {uploadingBrochure ? 'Subiendo...' : 'Haz clic para subir el brochure'}
+                        </p>
+                        <p className="text-xs text-gray-400 mt-1">Solo PDF (máx. 20MB)</p>
+                      </button>
+                    </div>
+                  )}
+
+                  {/* Manual URL input for brochure */}
+                  <div className="border-t border-gray-100 pt-4">
+                    <p className="text-xs text-gray-400 mb-2">O agrega una URL de brochure manualmente:</p>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        placeholder="https://ejemplo.com/brochure.pdf"
+                        id="manual-brochure-input"
+                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue/50"
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') {
+                            const input = e.currentTarget;
+                            if (input.value.trim()) {
+                              setForm({ ...form, brochure_url: input.value.trim() });
+                              input.value = '';
+                            }
+                          }
+                        }}
+                      />
+                      <Button
+                        variant="ghost"
+                        onClick={() => {
+                          const input = document.getElementById('manual-brochure-input') as HTMLInputElement;
+                          if (input?.value.trim()) {
+                            setForm({ ...form, brochure_url: input.value.trim() });
                             input.value = '';
                           }
                         }}

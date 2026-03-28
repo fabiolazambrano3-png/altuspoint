@@ -33,6 +33,7 @@ export interface Product {
   brand?: string;
   sku?: string;
   tags?: string[];
+  brochure_url?: string | null;
   variants?: ProductVariant[];
 }
 

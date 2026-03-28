@@ -24,6 +24,7 @@ import {
   Loader2,
   ChevronLeft,
   ChevronRight,
+  FileDown,
 } from 'lucide-react';
 import type { Product, ProductVariant, Category, Locale } from '@/types';
 
@@ -477,6 +478,19 @@ export default function ProductDetailPage() {
             >
               <MessageCircle className="w-4 h-4" />
               {t('ask_whatsapp')}
+            </a>
+          )}
+
+          {/* Brochure download */}
+          {product.brochure_url && (
+            <a
+              href={product.brochure_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 mt-4 px-4 py-2.5 bg-navy/5 hover:bg-navy/10 border border-navy/15 rounded-lg text-sm font-medium text-navy transition-colors"
+            >
+              <FileDown className="w-4.5 h-4.5" />
+              {locale === 'es' ? 'Descargar ficha técnica (PDF)' : 'Download product brochure (PDF)'}
             </a>
           )}
         </div>
