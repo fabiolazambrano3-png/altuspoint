@@ -1,10 +1,12 @@
-import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
+import { requireAdmin } from '@/lib/auth';
 
 // GET - List all orders with items
 export async function GET() {
   try {
-    const supabase = await createClient();
+    const auth = await requireAdmin();
+    if ('error' in auth) return auth.error;
+    const { supabase } = auth;
 
     const { data: orders, error } = await supabase
       .from('orders')
@@ -34,7 +36,9 @@ export async function GET() {
 // PUT - Update order status
 export async function PUT(request: Request) {
   try {
-    const supabase = await createClient();
+    const auth = await requireAdmin();
+    if ('error' in auth) return auth.error;
+    const { supabase } = auth;
     const body = await request.json();
     const { id, status } = body;
 

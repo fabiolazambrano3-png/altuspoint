@@ -1,10 +1,12 @@
-import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
+import { requireAdmin } from '@/lib/auth';
 
 // GET - List all products (admin view, no RLS filter on active)
 export async function GET() {
   try {
-    const supabase = await createClient();
+    const auth = await requireAdmin();
+    if ('error' in auth) return auth.error;
+    const { supabase } = auth;
 
     const { data: products, error } = await supabase
       .from('products')
@@ -26,7 +28,9 @@ export async function GET() {
 // POST - Create a new product
 export async function POST(request: Request) {
   try {
-    const supabase = await createClient();
+    const auth = await requireAdmin();
+    if ('error' in auth) return auth.error;
+    const { supabase } = auth;
     const body = await request.json();
 
     const { data: product, error } = await supabase
@@ -66,7 +70,9 @@ export async function POST(request: Request) {
 // PUT - Update a product
 export async function PUT(request: Request) {
   try {
-    const supabase = await createClient();
+    const auth = await requireAdmin();
+    if ('error' in auth) return auth.error;
+    const { supabase } = auth;
     const body = await request.json();
     const { id, ...updateData } = body;
 
@@ -99,7 +105,9 @@ export async function PUT(request: Request) {
 // DELETE - Delete a product
 export async function DELETE(request: Request) {
   try {
-    const supabase = await createClient();
+    const auth = await requireAdmin();
+    if ('error' in auth) return auth.error;
+    const { supabase } = auth;
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
 

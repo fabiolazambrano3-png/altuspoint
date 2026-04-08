@@ -1,10 +1,12 @@
-import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
+import { requireAdmin } from '@/lib/auth';
 
 // GET - List all blog posts (admin: includes drafts)
 export async function GET() {
   try {
-    const supabase = await createClient();
+    const auth = await requireAdmin();
+    if ('error' in auth) return auth.error;
+    const { supabase } = auth;
 
     const { data: posts, error } = await supabase
       .from('blog_posts')
@@ -26,7 +28,9 @@ export async function GET() {
 // POST - Create a new blog post
 export async function POST(request: Request) {
   try {
-    const supabase = await createClient();
+    const auth = await requireAdmin();
+    if ('error' in auth) return auth.error;
+    const { supabase } = auth;
     const body = await request.json();
 
     const { data: post, error } = await supabase
@@ -67,7 +71,9 @@ export async function POST(request: Request) {
 // PUT - Update a blog post
 export async function PUT(request: Request) {
   try {
-    const supabase = await createClient();
+    const auth = await requireAdmin();
+    if ('error' in auth) return auth.error;
+    const { supabase } = auth;
     const body = await request.json();
     const { id, ...updateData } = body;
 
@@ -114,7 +120,9 @@ export async function PUT(request: Request) {
 // DELETE - Delete a blog post
 export async function DELETE(request: Request) {
   try {
-    const supabase = await createClient();
+    const auth = await requireAdmin();
+    if ('error' in auth) return auth.error;
+    const { supabase } = auth;
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
 

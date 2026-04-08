@@ -1,5 +1,5 @@
-import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
+import { requireAdmin } from '@/lib/auth';
 
 // Sanitize a string to be safe as a Supabase storage key (ASCII only)
 function sanitizeKey(str: string): string {
@@ -13,7 +13,9 @@ function sanitizeKey(str: string): string {
 
 export async function POST(request: Request) {
   try {
-    const supabase = await createClient();
+    const auth = await requireAdmin();
+    if ('error' in auth) return auth.error;
+    const { supabase } = auth;
     const formData = await request.formData();
     const file = formData.get('file') as File;
     const productSlug = formData.get('productSlug') as string;
@@ -57,7 +59,9 @@ export async function POST(request: Request) {
 // DELETE - Remove an image from storage
 export async function DELETE(request: Request) {
   try {
-    const supabase = await createClient();
+    const auth = await requireAdmin();
+    if ('error' in auth) return auth.error;
+    const { supabase } = auth;
     const { searchParams } = new URL(request.url);
     const url = searchParams.get('url');
 
