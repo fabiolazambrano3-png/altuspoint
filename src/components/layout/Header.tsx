@@ -44,6 +44,7 @@ export default function Header() {
     { href: '/', label: t('home') },
     { href: '/productos', label: t('products') },
     { href: '/blog', label: 'Blog' },
+    { href: '/distribuidores', label: t('distributors') },
     { href: '/contacto', label: t('contact') },
   ];
 

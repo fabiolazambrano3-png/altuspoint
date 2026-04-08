@@ -27,6 +27,7 @@ import {
   FileDown,
 } from 'lucide-react';
 import type { Product, ProductVariant, Category, Locale } from '@/types';
+import { MetaEvents } from '@/components/MetaPixel';
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -78,6 +79,19 @@ export default function ProductDetailPage() {
     }
     fetchData();
   }, [params.slug]);
+
+  // Track ViewContent when product loads
+  useEffect(() => {
+    if (product) {
+      MetaEvents.viewContent({
+        content_name: product.name_es || product.name_en || '',
+        content_ids: [product.id],
+        content_type: 'product',
+        value: product.price_usd,
+        currency: 'USD',
+      });
+    }
+  }, [product]);
 
   // Extract unique sizes and colors from variants
   const { sizes, colors } = useMemo(() => {

@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import type { CartItem, Product } from '@/types';
 import toast from 'react-hot-toast';
+import { MetaEvents } from '@/components/MetaPixel';
 
 interface CartContextType {
   items: CartItem[];
@@ -49,6 +50,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
         );
       }
       return [...prev, { product, quantity }];
+    });
+    // Track Meta Pixel AddToCart event
+    MetaEvents.addToCart({
+      content_ids: [product.id],
+      content_name: product.name_es || product.name_en || '',
+      content_type: 'product',
+      value: product.price_usd * quantity,
+      currency: 'USD',
     });
     toast.success('Producto agregado al carrito');
   };

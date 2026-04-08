@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { useCart } from '@/components/providers/CartProvider';
+import { MetaEvents } from '@/components/MetaPixel';
 import { Link } from '@/i18n/navigation';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
@@ -23,6 +24,18 @@ export default function CheckoutPage() {
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod | null>(null);
   const [proofFile, setProofFile] = useState<File | null>(null);
   const [orderPlaced, setOrderPlaced] = useState(false);
+
+  // Track InitiateCheckout when page loads with items
+  useEffect(() => {
+    if (items.length > 0) {
+      MetaEvents.initiateCheckout({
+        content_ids: items.map((item) => item.product.id),
+        num_items: items.reduce((sum, item) => sum + item.quantity, 0),
+        value: totalPrice,
+        currency: 'USD',
+      });
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [form, setForm] = useState({
     fullName: '',
@@ -62,6 +75,14 @@ export default function CheckoutPage() {
         await fetch('/api/upload-proof', { method: 'POST', body: formData });
       }
 
+      // Track Purchase event
+      MetaEvents.purchase({
+        content_ids: items.map((item) => item.product.id),
+        content_type: 'product',
+        value: totalPrice,
+        currency: 'USD',
+        num_items: items.reduce((sum, item) => sum + item.quantity, 0),
+      });
       setOrderPlaced(true);
       clearCart();
     } catch (err) {

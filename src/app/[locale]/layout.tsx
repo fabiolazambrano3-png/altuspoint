@@ -6,6 +6,7 @@ import { Toaster } from 'react-hot-toast';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import MetaPixel from '@/components/MetaPixel';
 import { CartProvider } from '@/components/providers/CartProvider';
 import { ExchangeRateProvider } from '@/components/providers/ExchangeRateProvider';
 import '../globals.css';
@@ -64,6 +65,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body className={`${geistSans.variable} antialiased`}>
+        <MetaPixel />
         {/* Organization Schema */}
         <script
           type="application/ld+json"

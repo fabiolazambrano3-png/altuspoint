@@ -234,26 +234,18 @@ export default function HomePage() {
                 {t('distributor_text')}
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
-                <a
-                  href={`https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent('Hola, estoy interesado en ser distribuidor AltusPoint. Me gustaría recibir más información.')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href="/distribuidores">
                   <button className="inline-flex items-center justify-center gap-2 rounded-lg px-8 py-3 text-base font-semibold bg-green-primary text-white hover:bg-green-dark shadow-lg shadow-green-primary/20 transition-all duration-200">
                     <Handshake className="w-5 h-5" />
                     {t('distributor_cta')}
                   </button>
-                </a>
-                <a
-                  href={`https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent('Hola, me gustaría conocer los requisitos para ser distribuidor AltusPoint.')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                </Link>
+                <Link href="/distribuidores">
                   <button className="inline-flex items-center justify-center gap-2 rounded-lg px-8 py-3 text-base font-medium border-2 border-navy/20 text-navy hover:bg-navy/5 transition-all duration-200">
                     {t('distributor_cta_secondary')}
                     <ArrowRight className="w-4 h-4" />
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
 

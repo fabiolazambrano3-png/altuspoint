@@ -54,14 +54,9 @@ export default function Footer() {
               <Link href="/contacto" className="text-gray-400 hover:text-white transition-colors text-sm">
                 {tc('contact')}
               </Link>
-              <a
-                href={`https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent('Hola, estoy interesado en ser distribuidor AltusPoint.')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-green-primary hover:text-green-light transition-colors text-sm font-medium"
-              >
+              <Link href="/distribuidores" className="text-green-primary hover:text-green-light transition-colors text-sm font-medium">
                 {t('become_distributor')}
-              </a>
+              </Link>
             </nav>
           </div>
 

@@ -6,6 +6,8 @@ import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import { BRAND } from '@/lib/constants';
 import { Mail, Phone, MapPin, MessageCircle, CheckCircle, Handshake, ArrowRight } from 'lucide-react';
+import { MetaEvents } from '@/components/MetaPixel';
+import { Link } from '@/i18n/navigation';
 import toast from 'react-hot-toast';
 
 export default function ContactPage() {
@@ -29,6 +31,8 @@ export default function ContactPage() {
       });
       if (!res.ok) throw new Error('Failed to send');
       setSent(true);
+      // Track Lead event on successful contact form submission
+      MetaEvents.lead({ content_name: 'Contact Form', content_category: 'contact' });
       toast.success(t('sent'));
     } catch {
       toast.error('Error al enviar el mensaje');
@@ -146,15 +150,13 @@ export default function ContactPage() {
             <h3 className="text-xl font-bold text-white mb-1">{t('distributor_banner_title')}</h3>
             <p className="text-white/60 text-sm">{t('distributor_banner_text')}</p>
           </div>
-          <a
-            href={`https://wa.me/${BRAND.whatsapp.replace('+', '')}?text=${encodeURIComponent('Hola, estoy interesado en ser distribuidor AltusPoint. Me gustaría recibir más información.')}`}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/distribuidores"
             className="inline-flex items-center gap-2 px-6 py-3 bg-green-primary hover:bg-green-dark text-white font-semibold rounded-lg shadow-lg shadow-green-primary/20 transition-all duration-200 shrink-0"
           >
             {t('distributor_banner_cta')}
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
