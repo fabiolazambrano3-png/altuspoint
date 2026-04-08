@@ -16,41 +16,80 @@ const geistSans = Geist({
   subsets: ['latin'],
 });
 
-export const metadata: Metadata = {
-  title: 'AltusPoint - Distribuidora de Productos Médicos',
-  description:
-    'Distribuidora líder de equipos y material médico en Venezuela. Calidad garantizada para profesionales de la salud.',
-  keywords: [
-    'material médico', 'equipos médicos', 'Venezuela', 'distribuidora', 'AltusPoint',
-    'medias de compresión', 'medias compresivas', 'material quirúrgico', 'compresión graduada',
-    'cirugía plástica', 'ortesis', 'rehabilitación', 'insumos médicos', 'salud',
-  ],
-  metadataBase: new URL('https://altuspoint.health'),
-  openGraph: {
-    title: 'AltusPoint - Distribuidora de Material y Equipos Médicos',
+const BASE_URL = 'https://altuspoint.health';
+
+const seoByLocale = {
+  es: {
+    title: 'AltusPoint - Distribuidora de Equipos y Material Médico en Venezuela',
     description:
-      'Distribuidora líder de equipos y material médico en Venezuela. Calidad garantizada para profesionales de la salud.',
-    url: 'https://altuspoint.health',
-    siteName: 'AltusPoint',
-    locale: 'es_VE',
-    type: 'website',
-    images: [
-      {
-        url: 'https://altuspoint.health/opengraph-image',
-        width: 1200,
-        height: 630,
-        alt: 'AltusPoint - Distribuidora de Material y Equipos Médicos',
-      },
+      'Distribuidora líder de equipos y material médico en Venezuela. Más de 30 años de experiencia. Medias de compresión, equipos quirúrgicos, ortesis y más.',
+    ogLocale: 'es_VE',
+    keywords: [
+      'material médico', 'equipos médicos', 'Venezuela', 'distribuidora médica',
+      'medias de compresión', 'material quirúrgico', 'ortesis', 'insumos médicos',
+      'AltusPoint', 'compresión graduada', 'rehabilitación', 'cirugía plástica',
     ],
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'AltusPoint - Distribuidora de Material y Equipos Médicos',
+  en: {
+    title: 'AltusPoint - Medical Equipment & Supplies Distributor in Venezuela',
     description:
-      'Distribuidora líder de equipos y material médico en Venezuela. Calidad garantizada para profesionales de la salud.',
-    images: ['https://altuspoint.health/opengraph-image'],
+      'Leading medical equipment and supplies distributor in Venezuela. Over 30 years of experience. Compression stockings, surgical equipment, orthoses and more.',
+    ogLocale: 'en_US',
+    keywords: [
+      'medical equipment', 'medical supplies', 'Venezuela', 'medical distributor',
+      'compression stockings', 'surgical equipment', 'orthoses', 'healthcare supplies',
+      'AltusPoint', 'graduated compression', 'rehabilitation', 'plastic surgery',
+    ],
   },
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const seo = seoByLocale[locale as keyof typeof seoByLocale] || seoByLocale.es;
+
+  return {
+    title: {
+      default: seo.title,
+      template: `%s | AltusPoint`,
+    },
+    description: seo.description,
+    keywords: seo.keywords,
+    metadataBase: new URL(BASE_URL),
+    alternates: {
+      canonical: `${BASE_URL}/${locale}`,
+      languages: {
+        es: `${BASE_URL}/es`,
+        en: `${BASE_URL}/en`,
+      },
+    },
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      url: `${BASE_URL}/${locale}`,
+      siteName: 'AltusPoint',
+      locale: seo.ogLocale,
+      type: 'website',
+      images: [
+        {
+          url: `${BASE_URL}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: seo.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: seo.title,
+      description: seo.description,
+      images: [`${BASE_URL}/opengraph-image`],
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,
@@ -103,8 +142,8 @@ export default async function LocaleLayout({
               '@type': 'Organization',
               name: 'AltusPoint',
               legalName: 'AltusPoint, C.A.',
-              url: 'https://altuspoint.health',
-              logo: 'https://altuspoint.health/images/logo.png',
+              url: BASE_URL,
+              logo: `${BASE_URL}/images/logo.png`,
               description: 'Distribuidora de material y equipos médicos en Venezuela con más de 30 años de experiencia.',
               address: {
                 '@type': 'PostalAddress',
