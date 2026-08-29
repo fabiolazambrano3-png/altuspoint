@@ -51,6 +51,9 @@ export default function Footer() {
               <Link href="/blog" className="text-gray-400 hover:text-white transition-colors text-sm">
                 Blog
               </Link>
+              <Link href="/recursos" className="text-gray-400 hover:text-white transition-colors text-sm">
+                {tc('resources')}
+              </Link>
               <Link href="/contacto" className="text-gray-400 hover:text-white transition-colors text-sm">
                 {tc('contact')}
               </Link>

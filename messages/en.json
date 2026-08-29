@@ -22,7 +22,8 @@
     "about": "About us",
     "logged_out": "Logged out",
     "my_account": "My account",
-    "distributors": "Distributors"
+    "distributors": "Distributors",
+    "resources": "Resources"
   },
   "home": {
     "hero_title": "Premium medical equipment & supplies",
@@ -219,7 +220,8 @@
     "edit_product": "Edit product",
     "confirm_payment": "Confirm payment",
     "update_status": "Update status",
-    "low_stock": "Low stock"
+    "low_stock": "Low stock",
+    "resources": "Resources"
   },
   "distributors": {
     "hero_badge": "30+ years of experience | 8 product lines | National coverage",
@@ -305,6 +307,14 @@
     "cta_title": "Ready to grow with us?",
     "cta_subtitle": "Join the AltusPoint distributor network and bring world-class medical products to your region.",
     "cta_email_text": "Or write to us at"
+  },
+  "resources": {
+    "label": "Resources",
+    "title": "Resources & downloads",
+    "subtitle": "Download informational brochures for our medical product lines. Technical material and catalogs for healthcare professionals.",
+    "download": "Download brochure",
+    "no_resources": "No resources available",
+    "no_resources_hint": "We'll have downloadable materials for you soon."
   },
   "footer": {
     "rights": "All rights reserved.",

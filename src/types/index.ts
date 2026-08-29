@@ -99,6 +99,21 @@ export interface StoreSetting {
   value: string;
 }
 
+export interface LineBrochure {
+  id: string;
+  name_es: string;
+  name_en: string;
+  description_es: string;
+  description_en: string;
+  category_slug: string;
+  image_url: string;
+  brochure_url: string;
+  display_order: number;
+  active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface BlogPost {
   id: string;
   title_es: string;

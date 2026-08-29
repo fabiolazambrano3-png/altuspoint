@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { Package, ShoppingCart, DollarSign, AlertTriangle, TrendingUp, Loader2 } from 'lucide-react';
+import { Package, ShoppingCart, DollarSign, AlertTriangle, TrendingUp, Loader2, FolderOpen } from 'lucide-react';
 
 interface Stats {
   totalOrders: number;
@@ -112,6 +112,15 @@ export default function AdminDashboard() {
           <ShoppingCart className="w-8 h-8 text-navy mb-3 group-hover:scale-110 transition-transform" />
           <h3 className="font-semibold text-lg text-gray-900">{t('orders')}</h3>
           <p className="text-sm text-gray-500 mt-1">Gestionar pedidos y pagos</p>
+        </Link>
+
+        <Link
+          href="/admin/recursos"
+          className="bg-white rounded-xl border border-gray-100 p-6 hover:shadow-md transition-shadow group"
+        >
+          <FolderOpen className="w-8 h-8 text-navy mb-3 group-hover:scale-110 transition-transform" />
+          <h3 className="font-semibold text-lg text-gray-900">{t('resources')}</h3>
+          <p className="text-sm text-gray-500 mt-1">Brochures por línea de producto</p>
         </Link>
 
         <Link

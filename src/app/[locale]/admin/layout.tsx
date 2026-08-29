@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Package, ShoppingCart, BarChart3, ArrowLeft, FileText } from 'lucide-react';
+import { LayoutDashboard, Package, ShoppingCart, BarChart3, ArrowLeft, FileText, FolderOpen } from 'lucide-react';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const t = useTranslations('admin');
@@ -14,6 +14,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { href: '/admin/productos', label: t('products'), icon: Package },
     { href: '/admin/pedidos', label: t('orders'), icon: ShoppingCart },
     { href: '/admin/blog', label: t('blog'), icon: FileText },
+    { href: '/admin/recursos', label: t('resources'), icon: FolderOpen },
     { href: '/admin/inventario', label: t('inventory'), icon: BarChart3 },
   ];
 

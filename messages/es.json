@@ -22,7 +22,8 @@
     "about": "Nosotros",
     "logged_out": "Sesión cerrada",
     "my_account": "Mi cuenta",
-    "distributors": "Distribuidores"
+    "distributors": "Distribuidores",
+    "resources": "Recursos"
   },
   "home": {
     "hero_title": "Material y equipos médicos de la más alta calidad",
@@ -219,7 +220,8 @@
     "edit_product": "Editar producto",
     "confirm_payment": "Confirmar pago",
     "update_status": "Actualizar estado",
-    "low_stock": "Stock bajo"
+    "low_stock": "Stock bajo",
+    "resources": "Recursos"
   },
   "distributors": {
     "hero_badge": "30+ años de experiencia | 8 líneas de productos | Cobertura nacional",
@@ -305,6 +307,14 @@
     "cta_title": "¿Listo para crecer con nosotros?",
     "cta_subtitle": "Únete a la red de distribuidores AltusPoint y lleva productos médicos de clase mundial a tu región.",
     "cta_email_text": "O escríbenos a"
+  },
+  "resources": {
+    "label": "Recursos",
+    "title": "Recursos y descargas",
+    "subtitle": "Descarga los brochures informativos de nuestras líneas de productos. Material técnico y catálogos para profesionales de la salud.",
+    "download": "Descargar brochure",
+    "no_resources": "No hay recursos disponibles",
+    "no_resources_hint": "Pronto tendremos material descargable para ti."
   },
   "footer": {
     "rights": "Todos los derechos reservados.",
